@@ -22,7 +22,7 @@ pi: [toc, sortrefs, symrefs]
 author:
  -
     name: Thomas McCarthy-Howe
-    organization: Strolid
+    organization: VCONIC
     email: ghostofbasho@gmail.com
 
 normative:
