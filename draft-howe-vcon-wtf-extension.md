@@ -2,7 +2,7 @@
 title: "vCon World Transcription Format Extension"
 abbrev: "vCon WTF Extension"
 category: std
-docname: draft-howe-vcon-wtf-extension-00
+docname: draft-howe-vcon-wtf-extension
 ipr: trust200902
 area: "Applications and Real-Time"
 workgroup: "vCon"
@@ -13,7 +13,7 @@ venue:
   mail: "vcon@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/vcon/"
   github: "vcon-dev/draft-howe-vcon-wtf-extension"
-  latest: "https://vcon-dev.github.io/draft-howe-vcon-wtf-extension/draft-howe-vcon-wtf-extension-00.html"
+  latest: "https://vcon-dev.github.io/draft-howe-vcon-wtf-extension/draft-howe-vcon-wtf-extension-latest.html"
 
 stand_alone: yes
 smart_quotes: no
@@ -24,6 +24,8 @@ author:
     name: Thomas McCarthy-Howe
     organization: VCONIC
     email: ghostofbasho@gmail.com
+
+date: 2025-09-25
 
 normative:
   RFC2119:
@@ -121,6 +123,10 @@ This document defines the World Transcription Format (WTF) extension for Virtual
 The WTF extension is designed as a Compatible Extension that introduces transcription attachments without altering existing vCon semantics, ensuring backward compatibility with existing vCon implementations.
 
 --- middle
+
+# Requirements Language
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.
 
 # Introduction
 
@@ -587,7 +593,10 @@ This document requests IANA to establish a new registry for WTF transcription pr
       "encoding": "json",
       "body": {
         "transcript": {
-          "text": "Hello, this is Alice from customer service. How can I help you today? Hi Alice, I'm having trouble with my account. Can you help me reset my password?",
+          "text": "Hello, this is Alice from customer service. " +
+                  "How can I help you today? Hi Alice, I'm having " +
+                  "trouble with my account. Can you help me reset " +
+                  "my password?",
           "language": "en-US",
           "duration": 65.2,
           "confidence": 0.92
@@ -597,7 +606,8 @@ This document requests IANA to establish a new registry for WTF transcription pr
             "id": 0,
             "start": 0.5,
             "end": 4.8,
-            "text": "Hello, this is Alice from customer service. How can I help you today?",
+            "text": "Hello, this is Alice from customer service. " +
+                    "How can I help you today?",
             "confidence": 0.95,
             "speaker": 0,
             "words": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
@@ -606,10 +616,12 @@ This document requests IANA to establish a new registry for WTF transcription pr
             "id": 1,
             "start": 5.2,
             "end": 9.1,
-            "text": "Hi Alice, I'm having trouble with my account. Can you help me reset my password?",
+            "text": "Hi Alice, I'm having trouble with my account. " +
+                    "Can you help me reset my password?",
             "confidence": 0.88,
             "speaker": 1,
-            "words": [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+            "words": [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+                      30, 31]
           }
         ],
         "words": [
@@ -686,7 +698,8 @@ This document requests IANA to establish a new registry for WTF transcription pr
                 "end": 4.8,
                 "confidence": 0.95,
                 "channel": 0,
-                "transcript": "Hello, this is Alice from customer service. How can I help you today?"
+                "transcript": "Hello, this is Alice from customer service. " +
+                              "How can I help you today?"
               }
             ]
           }

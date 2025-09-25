@@ -16,7 +16,7 @@ The World Transcription Format (WTF) extension for Virtualized Conversations (vC
 
 ## Repository Structure
 
-- `draft-howe-vcon-wtf-extension.md` - The main Internet-Draft document
+- `draft-howe-vcon-wtf-extension-00.md` - The main Internet-Draft document
 - `.github/workflows/` - GitHub Actions workflows for building and publishing the draft
 - `template/` - Original template files (can be removed after setup)
 
