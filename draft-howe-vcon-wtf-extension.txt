@@ -342,7 +342,7 @@ Table of Contents
      "text": "string",       // Complete transcription text
      "language": "string",   // BCP-47 language code (e.g., "en-US")
      "duration": "number",   // Total audio duration in seconds
-     "confidence": "number"  // Overall confidence score [0.0-1.0]
+     "confidence": "number"  // Overall confidence score \[0.0-1.0\]
    }
 
    The transcript object provides the high-level summary of the entire
@@ -360,17 +360,17 @@ Table of Contents
 
 5.2.1.2.  Segments Array
 
- "segments": [
-   {
-     "id": "integer",              // Sequential segment identifier
-     "start": "number",            // Start time in seconds
-     "end": "number",              // End time in seconds
-     "text": "string",             // Segment text content
-     "confidence": "number",       // Segment-level confidence [0.0-1.0]
-     "speaker": "integer|string",  // Optional: Speaker identifier
-     "words": ["integer"]          // Optional: Array of word indices
-   }
- ]
+"segments": [
+  {
+    "id": "integer",              // Sequential segment identifier
+    "start": "number",            // Start time in seconds
+    "end": "number",              // End time in seconds
+    "text": "string",             // Segment text content
+    "confidence": "number",       // Segment-level confidence \[0.0-1.0\]
+    "speaker": "integer|string",  // Optional: Speaker identifier
+    "words": ["integer"]          // Optional: Array of word indices
+  }
+]
 
    Segments represent logical chunks of transcribed content, typically
    sentence or phrase boundaries:
@@ -418,17 +418,17 @@ Table of Contents
 
 5.2.2.1.  Words Array
 
-   "words": [
-     {
-       "id": "integer",              // Sequential word identifier
-       "start": "number",            // Word start time in seconds
-       "end": "number",              // Word end time in seconds
-       "text": "string",             // Word text
-       "confidence": "number",       // Word-level confidence [0.0-1.0]
-       "speaker": "integer|string",  // Optional: Speaker identifier
-       "is_punctuation": "boolean"   // Optional: Punctuation marker
-     }
-   ]
+  "words": [
+    {
+      "id": "integer",              // Sequential word identifier
+      "start": "number",            // Word start time in seconds
+      "end": "number",              // Word end time in seconds
+      "text": "string",             // Word text
+      "confidence": "number",       // Word-level confidence \[0.0-1.0\]
+      "speaker": "integer|string",  // Optional: Speaker identifier
+      "is_punctuation": "boolean"   // Optional: Punctuation marker
+    }
+  ]
 
 5.2.2.2.  Speakers Object
 
@@ -438,7 +438,7 @@ Table of Contents
     "label": "string",            // Human-readable speaker name
     "segments": ["integer"],      // Array of segment IDs for this speaker
     "total_time": "number",       // Total speaking time in seconds
-    "confidence": "number"        // Diarization confidence [0.0-1.0]
+    "confidence": "number"        // Diarization confidence \[0.0-1.0\]
   }
 }
 
@@ -446,7 +446,7 @@ Table of Contents
 
    "quality": {
      "audio_quality": "string",      // high, medium, low
-     "background_noise": "number",   // Noise level [0.0-1.0]
+     "background_noise": "number",   // Noise level \[0.0-1.0\]
      "multiple_speakers": "boolean",
      "overlapping_speech": "boolean",
      "silence_ratio": "number",      // Percentage of silence
@@ -946,17 +946,11 @@ Table of Contents
 
 Acknowledgements
 
-   *  Thank you to Daniel Petrie for the foundational vCon specification
-      that enables this transcription extension.
-
    *  Appreciation to the transcription provider community for their
       input on standardization requirements.
 
    *  Thanks to the vCon working group for their feedback and guidance
       on extension design patterns.
-
-   *  Recognition to the World Transcription Format development team for
-      creating the underlying schema specification.
 
 Trademark Notice
 

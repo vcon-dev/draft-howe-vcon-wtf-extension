@@ -1567,7 +1567,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
   "text": "string",       // Complete transcription text
   "language": "string",   // BCP-47 language code (e.g., "en-US")
   "duration": "number",   // Total audio duration in seconds
-  "confidence": "number"  // Overall confidence score [0.0-1.0]
+  "confidence": "number"  // Overall confidence score \[0.0-1.0\]
 }
 </pre><a href="#section-5.2.1.1-1" class="pilcrow">¶</a>
 </div>
@@ -1583,7 +1583,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <p id="section-5.2.1.1-3.3.1"><strong>duration</strong>: Floating-point seconds, MUST be ≥ 0<a href="#section-5.2.1.1-3.3.1" class="pilcrow">¶</a></p>
 </li>
               <li class="normal" id="section-5.2.1.1-3.4">
-                <p id="section-5.2.1.1-3.4.1"><strong>confidence</strong>: Normalized to [0, 1] range regardless of provider scale<a href="#section-5.2.1.1-3.4.1" class="pilcrow">¶</a></p>
+                <p id="section-5.2.1.1-3.4.1"><strong>confidence</strong>: Normalized to <code>[0, 1]</code> range regardless of provider scale<a href="#section-5.2.1.1-3.4.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </section>
@@ -1601,7 +1601,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
     "start": "number",            // Start time in seconds
     "end": "number",              // End time in seconds
     "text": "string",             // Segment text content
-    "confidence": "number",       // Segment-level confidence [0.0-1.0]
+    "confidence": "number",       // Segment-level confidence \[0.0-1.0\]
     "speaker": "integer|string",  // Optional: Speaker identifier
     "words": ["integer"]          // Optional: Array of word indices
   }
@@ -1620,7 +1620,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <p id="section-5.2.1.2-3.3.1"><strong>text</strong>: SHOULD be trimmed of leading/trailing whitespace<a href="#section-5.2.1.2-3.3.1" class="pilcrow">¶</a></p>
 </li>
               <li class="normal" id="section-5.2.1.2-3.4">
-                <p id="section-5.2.1.2-3.4.1"><strong>speaker</strong>: Can be integer (0, 1, 2) or string ("Speaker A")<a href="#section-5.2.1.2-3.4.1" class="pilcrow">¶</a></p>
+                <p id="section-5.2.1.2-3.4.1"><strong>speaker</strong>: Can be integer (<code>0</code>, <code>1</code>, <code>2</code>) or string ("Speaker A")<a href="#section-5.2.1.2-3.4.1" class="pilcrow">¶</a></p>
 </li>
               <li class="normal" id="section-5.2.1.2-3.5">
                 <p id="section-5.2.1.2-3.5.1"><strong>words</strong>: References indices in the words array<a href="#section-5.2.1.2-3.5.1" class="pilcrow">¶</a></p>
@@ -1689,7 +1689,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
     "start": "number",            // Word start time in seconds
     "end": "number",              // Word end time in seconds
     "text": "string",             // Word text
-    "confidence": "number",       // Word-level confidence [0.0-1.0]
+    "confidence": "number",       // Word-level confidence \[0.0-1.0\]
     "speaker": "integer|string",  // Optional: Speaker identifier
     "is_punctuation": "boolean"   // Optional: Punctuation marker
   }
@@ -1711,7 +1711,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
     "label": "string",            // Human-readable speaker name
     "segments": ["integer"],      // Array of segment IDs for this speaker
     "total_time": "number",       // Total speaking time in seconds
-    "confidence": "number"        // Diarization confidence [0.0-1.0]
+    "confidence": "number"        // Diarization confidence \[0.0-1.0\]
   }
 }
 </pre><a href="#section-5.2.2.2-1" class="pilcrow">¶</a>
@@ -1727,7 +1727,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <pre>
 "quality": {
   "audio_quality": "string",      // high, medium, low
-  "background_noise": "number",   // Noise level [0.0-1.0]
+  "background_noise": "number",   // Noise level \[0.0-1.0\]
   "multiple_speakers": "boolean",
   "overlapping_speech": "boolean",
   "silence_ratio": "number",      // Percentage of silence
@@ -1814,7 +1814,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <p id="section-6.2-1">When converting from provider-specific formats to WTF:<a href="#section-6.2-1" class="pilcrow">¶</a></p>
 <ol start="1" type="1" class="normal type-1" id="section-6.2-2">
 <li id="section-6.2-2.1">
-            <p id="section-6.2-2.1.1"><strong>Normalize confidence scores</strong> to [0.0, 1.0] range<a href="#section-6.2-2.1.1" class="pilcrow">¶</a></p>
+            <p id="section-6.2-2.1.1"><strong>Normalize confidence scores</strong> to <code>[0.0, 1.0]</code> range<a href="#section-6.2-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li id="section-6.2-2.2">
             <p id="section-6.2-2.2.1"><strong>Convert timestamps</strong> to floating-point seconds<a href="#section-6.2-2.2.1" class="pilcrow">¶</a></p>
@@ -1892,7 +1892,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         <h3 id="name-confidence-score-normalizat">
 <a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-confidence-score-normalizat" class="section-name selfRef">Confidence Score Normalization</a>
         </h3>
-<p id="section-7.1-1">All confidence scores MUST be normalized to the [0.0, 1.0] range:<a href="#section-7.1-1" class="pilcrow">¶</a></p>
+<p id="section-7.1-1">All confidence scores MUST be normalized to the <code>[0.0, 1.0]</code> range:<a href="#section-7.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-7.1-2.1">
             <p id="section-7.1-2.1.1"><strong>1.0</strong>: Highest confidence (perfect recognition)<a href="#section-7.1-2.1.1" class="pilcrow">¶</a></p>
@@ -2421,16 +2421,10 @@ Registration Template:
       </h2>
 <ul class="normal">
 <li class="normal" id="appendix-A-1.1">
-          <p id="appendix-A-1.1.1">Thank you to Daniel Petrie for the foundational vCon specification that enables this transcription extension.<a href="#appendix-A-1.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-1.1.1">Appreciation to the transcription provider community for their input on standardization requirements.<a href="#appendix-A-1.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-A-1.2">
-          <p id="appendix-A-1.2.1">Appreciation to the transcription provider community for their input on standardization requirements.<a href="#appendix-A-1.2.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-1.3">
-          <p id="appendix-A-1.3.1">Thanks to the vCon working group for their feedback and guidance on extension design patterns.<a href="#appendix-A-1.3.1" class="pilcrow">¶</a></p>
-</li>
-        <li class="normal" id="appendix-A-1.4">
-          <p id="appendix-A-1.4.1">Recognition to the World Transcription Format development team for creating the underlying schema specification.<a href="#appendix-A-1.4.1" class="pilcrow">¶</a></p>
+          <p id="appendix-A-1.2.1">Thanks to the vCon working group for their feedback and guidance on extension design patterns.<a href="#appendix-A-1.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>

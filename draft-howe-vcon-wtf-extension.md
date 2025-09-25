@@ -267,7 +267,7 @@ The `body` field of the WTF transcription attachment MUST contain a JSON object 
   "text": "string",       // Complete transcription text
   "language": "string",   // BCP-47 language code (e.g., "en-US")
   "duration": "number",   // Total audio duration in seconds
-  "confidence": "number"  // Overall confidence score [0.0-1.0]
+  "confidence": "number"  // Overall confidence score \[0.0-1.0\]
 }
 </artwork>
 
@@ -276,7 +276,7 @@ The transcript object provides the high-level summary of the entire transcriptio
 * **text**: The complete, concatenated transcription text
 * **language**: MUST use BCP-47 format [BCP47] (examples: "en-US", "es-MX", "fr-CA")
 * **duration**: Floating-point seconds, MUST be ≥ 0
-* **confidence**: Normalized to [0, 1] range regardless of provider scale
+* **confidence**: Normalized to `[0, 1]` range regardless of provider scale
 
 #### Segments Array
 
@@ -287,7 +287,7 @@ The transcript object provides the high-level summary of the entire transcriptio
     "start": "number",            // Start time in seconds
     "end": "number",              // End time in seconds
     "text": "string",             // Segment text content
-    "confidence": "number",       // Segment-level confidence [0.0-1.0]
+    "confidence": "number",       // Segment-level confidence \[0.0-1.0\]
     "speaker": "integer|string",  // Optional: Speaker identifier
     "words": ["integer"]          // Optional: Array of word indices
   }
@@ -299,7 +299,7 @@ Segments represent logical chunks of transcribed content, typically sentence or 
 * **id**: MUST be unique within the document, typically sequential
 * **start**/**end**: Floating-point seconds, where end > start
 * **text**: SHOULD be trimmed of leading/trailing whitespace
-* **speaker**: Can be integer (0, 1, 2) or string ("Speaker A")
+* **speaker**: Can be integer (`0`, `1`, `2`) or string ("Speaker A")
 * **words**: References indices in the words array
 
 #### Metadata Object
@@ -340,7 +340,7 @@ The metadata object captures processing and source information:
     "start": "number",            // Word start time in seconds
     "end": "number",              // Word end time in seconds
     "text": "string",             // Word text
-    "confidence": "number",       // Word-level confidence [0.0-1.0]
+    "confidence": "number",       // Word-level confidence \[0.0-1.0\]
     "speaker": "integer|string",  // Optional: Speaker identifier
     "is_punctuation": "boolean"   // Optional: Punctuation marker
   }
@@ -356,7 +356,7 @@ The metadata object captures processing and source information:
     "label": "string",            // Human-readable speaker name
     "segments": ["integer"],      // Array of segment IDs for this speaker
     "total_time": "number",       // Total speaking time in seconds
-    "confidence": "number"        // Diarization confidence [0.0-1.0]
+    "confidence": "number"        // Diarization confidence \[0.0-1.0\]
   }
 }
 </artwork>
@@ -366,7 +366,7 @@ The metadata object captures processing and source information:
 <artwork type="json">
 "quality": {
   "audio_quality": "string",      // high, medium, low
-  "background_noise": "number",   // Noise level [0.0-1.0]
+  "background_noise": "number",   // Noise level \[0.0-1.0\]
   "multiple_speakers": "boolean",
   "overlapping_speech": "boolean",
   "silence_ratio": "number",      // Percentage of silence
@@ -407,7 +407,7 @@ The WTF extension supports integration with major transcription providers:
 
 When converting from provider-specific formats to WTF:
 
-1. **Normalize confidence scores** to [0.0, 1.0] range
+1. **Normalize confidence scores** to `[0.0, 1.0]` range
 2. **Convert timestamps** to floating-point seconds
 3. **Standardize language codes** to BCP-47 format
 4. **Preserve provider-specific features** in extensions field
@@ -449,7 +449,7 @@ When converting from provider-specific formats to WTF:
 
 ## Confidence Score Normalization
 
-All confidence scores MUST be normalized to the [0.0, 1.0] range:
+All confidence scores MUST be normalized to the `[0.0, 1.0]` range:
 
 * **1.0**: Highest confidence (perfect recognition)
 * **0.9-1.0**: High confidence
@@ -468,7 +468,7 @@ Provider-specific scales are converted during import:
 The quality object provides assessment metrics:
 
 * **audio_quality**: Categorical assessment (high/medium/low)
-* **background_noise**: Noise level [0.0-1.0]
+* **background_noise**: Noise level \[0.0-1.0\]
 * **multiple_speakers**: Boolean indicator of multi-speaker content
 * **overlapping_speech**: Boolean indicator of speaker overlap
 * **silence_ratio**: Percentage of audio that is silence
@@ -778,10 +778,8 @@ This document requests IANA to establish a new registry for WTF transcription pr
 # Acknowledgements
 {:numbered="false"}
 
-* Thank you to Daniel Petrie for the foundational vCon specification that enables this transcription extension.
 * Appreciation to the transcription provider community for their input on standardization requirements.
 * Thanks to the vCon working group for their feedback and guidance on extension design patterns.
-* Recognition to the World Transcription Format development team for creating the underlying schema specification.
 
 # Trademark Notice
 {:numbered="false"}
