@@ -145,7 +145,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 **World Transcription Format (WTF)**: A standardized JSON schema for representing speech-to-text transcription data from any provider in a consistent, interoperable format.
 
-**Transcription Provider**: A service or system that converts audio or video content to text, such as Whisper, Deepgram, AssemblyAI, Google Cloud Speech-to-Text, Amazon Transcribe, or Azure Speech Services.
+**Transcription Provider**: A service or system that converts audio or video content to text, such as Whisper™, Deepgram™, AssemblyAI™, Google Cloud Speech-to-Text™, Amazon Transcribe™, or Azure Speech Services™.
 
 **WTF Attachment**: A vCon attachment with type "wtf_transcription" that contains structured transcription information in World Transcription Format.
 
@@ -383,16 +383,16 @@ The metadata object captures processing and source information:
 
 The WTF extension supports integration with major transcription providers:
 
-* **Whisper**: OpenAI's open-source speech recognition system
-* **Deepgram**: Real-time speech-to-text API
-* **AssemblyAI**: AI-powered transcription and audio intelligence
-* **Google Cloud Speech-to-Text**: Google's speech recognition service
-* **Amazon Transcribe**: AWS speech-to-text service
-* **Azure Speech Services**: Microsoft's speech recognition platform
-* **Rev.ai**: Automated and human transcription services
-* **Speechmatics**: Real-time and batch speech recognition
-* **Wav2Vec2**: Facebook's self-supervised speech recognition model
-* **Parakeet**: NVIDIA's speech recognition toolkit
+* **Whisper™**: OpenAI's open-source speech recognition system
+* **Deepgram™**: Real-time speech-to-text API
+* **AssemblyAI™**: AI-powered transcription and audio intelligence
+* **Google Cloud Speech-to-Text™**: Google's speech recognition service
+* **Amazon Transcribe™**: AWS speech-to-text service
+* **Azure Speech Services™**: Microsoft's speech recognition platform
+* **Rev.ai™**: Automated and human transcription services
+* **Speechmatics™**: Real-time and batch speech recognition
+* **Wav2Vec2™**: Facebook's self-supervised speech recognition model
+* **Parakeet™**: NVIDIA's speech recognition toolkit
 
 ## Conversion Requirements
 
@@ -523,7 +523,7 @@ Registration Template:
 This document requests IANA to establish a new registry for WTF transcription providers with initial registrations for supported providers:
 
 * **Provider Name**: whisper
-* **Description**: OpenAI Whisper speech recognition system
+* **Description**: OpenAI Whisper™ speech recognition system
 * **Change Controller**: IESG
 * **Specification Document**: This document
 (Additional provider registrations would be added for each supported provider)
@@ -768,3 +768,19 @@ This document requests IANA to establish a new registry for WTF transcription pr
 * Appreciation to the transcription provider community for their input on standardization requirements.
 * Thanks to the vCon working group for their feedback and guidance on extension design patterns.
 * Recognition to the World Transcription Format development team for creating the underlying schema specification.
+
+# Trademark Notice
+{:numbered="false"}
+
+All trademarks mentioned in this document are the property of their respective owners. The use of these trademarks does not imply endorsement by the IETF or the authors of this document. The following trademarks are referenced:
+
+* Whisper™ is a trademark of OpenAI, Inc.
+* Deepgram™ is a trademark of Deepgram, Inc.
+* AssemblyAI™ is a trademark of AssemblyAI, Inc.
+* Google Cloud Speech-to-Text™ is a trademark of Google LLC.
+* Amazon Transcribe™ is a trademark of Amazon.com, Inc.
+* Azure Speech Services™ is a trademark of Microsoft Corporation.
+* Rev.ai™ is a trademark of Rev.com, Inc.
+* Speechmatics™ is a trademark of Speechmatics Limited.
+* Wav2Vec2™ is a trademark of Meta Platforms, Inc.
+* Parakeet™ is a trademark of NVIDIA Corporation.

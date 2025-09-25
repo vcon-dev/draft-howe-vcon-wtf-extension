@@ -118,6 +118,7 @@ Table of Contents
      11.1.  Normative References
      11.2.  Informative References
    Acknowledgements
+   Trademark Notice
    Author's Address
 
 1.  Introduction
@@ -182,8 +183,9 @@ Table of Contents
    consistent, interoperable format.
 
    *Transcription Provider*: A service or system that converts audio or
-   video content to text, such as Whisper, Deepgram, AssemblyAI, Google
-   Cloud Speech-to-Text, Amazon Transcribe, or Azure Speech Services.
+   video content to text, such as Whisper™, Deepgram™, AssemblyAI™,
+   Google Cloud Speech-to-Text™, Amazon Transcribe™, or Azure Speech
+   Services™.
 
    *WTF Attachment*: A vCon attachment with type "wtf_transcription"
    that contains structured transcription information in World
@@ -422,25 +424,26 @@ Table of Contents
    The WTF extension supports integration with major transcription
    providers:
 
-   *  *Whisper*: OpenAI's open-source speech recognition system
+   *  *Whisper™*: OpenAI's open-source speech recognition system
 
-   *  *Deepgram*: Real-time speech-to-text API
+   *  *Deepgram™*: Real-time speech-to-text API
 
-   *  *AssemblyAI*: AI-powered transcription and audio intelligence
+   *  *AssemblyAI™*: AI-powered transcription and audio intelligence
 
-   *  *Google Cloud Speech-to-Text*: Google's speech recognition service
+   *  *Google Cloud Speech-to-Text™*: Google's speech recognition
+      service
 
-   *  *Amazon Transcribe*: AWS speech-to-text service
+   *  *Amazon Transcribe™*: AWS speech-to-text service
 
-   *  *Azure Speech Services*: Microsoft's speech recognition platform
+   *  *Azure Speech Services™*: Microsoft's speech recognition platform
 
-   *  *Rev.ai*: Automated and human transcription services
+   *  *Rev.ai™*: Automated and human transcription services
 
-   *  *Speechmatics*: Real-time and batch speech recognition
+   *  *Speechmatics™*: Real-time and batch speech recognition
 
-   *  *Wav2Vec2*: Facebook's self-supervised speech recognition model
+   *  *Wav2Vec2™*: Facebook's self-supervised speech recognition model
 
-   *  *Parakeet*: NVIDIA's speech recognition toolkit
+   *  *Parakeet™*: NVIDIA's speech recognition toolkit
 
 6.2.  Conversion Requirements
 
@@ -603,7 +606,7 @@ Table of Contents
 
    *  *Provider Name*: whisper
 
-   *  *Description*: OpenAI Whisper speech recognition system
+   *  *Description*: OpenAI Whisper™ speech recognition system
 
    *  *Change Controller*: IESG
 
@@ -732,6 +735,33 @@ Acknowledgements
 
    *  Recognition to the World Transcription Format development team for
       creating the underlying schema specification.
+
+Trademark Notice
+
+   All trademarks mentioned in this document are the property of their
+   respective owners.  The use of these trademarks does not imply
+   endorsement by the IETF or the authors of this document.  The
+   following trademarks are referenced:
+
+   *  Whisper™ is a trademark of OpenAI, Inc.
+
+   *  Deepgram™ is a trademark of Deepgram, Inc.
+
+   *  AssemblyAI™ is a trademark of AssemblyAI, Inc.
+
+   *  Google Cloud Speech-to-Text™ is a trademark of Google LLC.
+
+   *  Amazon Transcribe™ is a trademark of Amazon.com, Inc.
+
+   *  Azure Speech Services™ is a trademark of Microsoft Corporation.
+
+   *  Rev.ai™ is a trademark of Rev.com, Inc.
+
+   *  Speechmatics™ is a trademark of Speechmatics Limited.
+
+   *  Wav2Vec2™ is a trademark of Meta Platforms, Inc.
+
+   *  Parakeet™ is a trademark of NVIDIA Corporation.
 
 Author's Address
 
