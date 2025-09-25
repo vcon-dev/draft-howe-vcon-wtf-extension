@@ -2,7 +2,7 @@
 title: "vCon World Transcription Format Extension"
 abbrev: "vCon WTF Extension"
 category: std
-docname: draft-howe-vcon-wtf-extension-00
+docname: draft-howe-vcon-wtf-extension
 ipr: trust200902
 area: "Applications and Real-Time"
 workgroup: "vCon"
@@ -13,7 +13,7 @@ venue:
   mail: "vcon@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/vcon/"
   github: "vcon-dev/draft-howe-vcon-wtf-extension"
-  latest: "https://vcon-dev.github.io/draft-howe-vcon-wtf-extension/draft-howe-vcon-wtf-extension-00.html"
+  latest: "https://vcon-dev.github.io/draft-howe-vcon-wtf-extension/draft-howe-vcon-wtf-extension-latest.html"
 
 stand_alone: yes
 smart_quotes: no
@@ -27,7 +27,7 @@ author:
 
 date: 2025-09-25
 seriesinfo:
-  Internet-Draft: draft-howe-vcon-wtf-extension-00
+  Internet-Draft: draft-howe-vcon-wtf-extension
 
 normative:
   RFC2119:
