@@ -2,7 +2,7 @@
 title: "vCon World Transcription Format Extension"
 abbrev: "vCon WTF Extension"
 category: std
-docname: draft-howe-vcon-wtf-extension
+docname: draft-howe-vcon-wtf-extension-latest
 ipr: trust200902
 area: "Applications and Real-Time"
 workgroup: "vCon"
