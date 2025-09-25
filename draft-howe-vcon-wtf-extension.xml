@@ -50,40 +50,77 @@
 <section anchor="introduction">
       <name>Introduction</name>
       <t>Virtualized Conversations (vCon) <xref target="I-D.draft-ietf-vcon-core-00"/> provide a standardized container format for conversation data, enabling interoperability across different communication platforms and modalities. As speech-to-text technology becomes increasingly important for conversation analysis, compliance, and accessibility, there is a growing need for standardized transcription representation within vCon containers.</t>
-      <t>Current transcription services each use proprietary formats, making it difficult to:
-* Switch between transcription providers without data conversion
-* Perform comparative analysis across different providers
-* Maintain consistent data processing pipelines
-* Preserve transcription metadata during system migrations
-* Ensure long-term accessibility and archival compliance
-This document defines the World Transcription Format (WTF) extension for vCon, which addresses these challenges by providing:
-* A unified schema for transcription data from any speech-to-text provider
-* Hierarchical organization from words to segments to complete transcripts
-* Extensible fields for provider-specific features
-* Built-in quality metrics and confidence scoring
-* Support for real-time and batch transcription workflows
-* Consistent export capabilities to standard subtitle and caption formats
-The WTF extension enables organizations to standardize their transcription workflows while maintaining the flexibility to use multiple providers and preserve provider-specific enhancements.
-## Requirements Language
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <xref target="RFC8174">RFC2119</xref> when, and only when, they appear in all capitals, as shown here.
-# Conventions and Definitions
-## Core Terms
-<strong>World Transcription Format (WTF)</strong>: A standardized JSON schema for representing speech-to-text transcription data from any provider in a consistent, interoperable format.
-<strong>Transcription Provider</strong>: A service or system that converts audio or video content to text, such as Whisper, Deepgram, AssemblyAI, Google Cloud Speech-to-Text, Amazon Transcribe, or Azure Speech Services.
-<strong>WTF Attachment</strong>: A vCon attachment with type "wtf_transcription" that contains structured transcription information in World Transcription Format.
-<strong>Segment</strong>: A logical chunk of transcribed content, typically representing sentence or phrase boundaries with associated timing information.
-<strong>Speaker Diarization</strong>: The process of partitioning an audio stream into homogeneous segments according to the speaker identity, enabling "who spoke when" analysis.
-<strong>Compatible Extension</strong>: A vCon extension that introduces additional data without altering the meaning or structure of existing elements, as defined in <xref target="I-D.draft-ietf-vcon-core-00"/>.
-# World Transcription Format Overview
-The World Transcription Format uses a hierarchical JSON structure designed to capture transcription data at multiple levels of granularity while maintaining consistency across different providers.
-## Design Principles
-<strong>Completeness</strong>: WTF captures all essential transcription data including text, timing, confidence scores, and speaker information.
-<strong>Consistency</strong>: Provides uniform structure regardless of the underlying transcription provider.
-<strong>Extensibility</strong>: Supports provider-specific features through structured extension fields.
-<strong>Validation</strong>: Includes built-in data integrity checking and quality metrics.
-<strong>Hierarchical Organization</strong>: Natural progression from words to segments to complete transcripts.
-## Core Structure
-WTF uses a hierarchical JSON structure with three required sections and multiple optional enrichment layers:
+      <t>Current transcription services each use proprietary formats, making it difficult to:</t>
+      <ul spacing="normal">
+        <li>
+          <t>Switch between transcription providers without data conversion</t>
+        </li>
+        <li>
+          <t>Perform comparative analysis across different providers</t>
+        </li>
+        <li>
+          <t>Maintain consistent data processing pipelines</t>
+        </li>
+        <li>
+          <t>Preserve transcription metadata during system migrations</t>
+        </li>
+        <li>
+          <t>Ensure long-term accessibility and archival compliance</t>
+        </li>
+      </ul>
+      <t>This document defines the World Transcription Format (WTF) extension for vCon, which addresses these challenges by providing:</t>
+      <ul spacing="normal">
+        <li>
+          <t>A unified schema for transcription data from any speech-to-text provider</t>
+        </li>
+        <li>
+          <t>Hierarchical organization from words to segments to complete transcripts</t>
+        </li>
+        <li>
+          <t>Extensible fields for provider-specific features</t>
+        </li>
+        <li>
+          <t>Built-in quality metrics and confidence scoring</t>
+        </li>
+        <li>
+          <t>Support for real-time and batch transcription workflows</t>
+        </li>
+        <li>
+          <t>Consistent export capabilities to standard subtitle and caption formats</t>
+        </li>
+      </ul>
+      <t>The WTF extension enables organizations to standardize their transcription workflows while maintaining the flexibility to use multiple providers and preserve provider-specific enhancements.</t>
+      <section anchor="requirements-language">
+        <name>Requirements Language</name>
+        <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 <xref target="RFC8174">RFC2119</xref> when, and only when, they appear in all capitals, as shown here.</t>
+      </section>
+    </section>
+    <section anchor="conventions-and-definitions">
+      <name>Conventions and Definitions</name>
+      <section anchor="core-terms">
+        <name>Core Terms</name>
+        <t><strong>World Transcription Format (WTF)</strong>: A standardized JSON schema for representing speech-to-text transcription data from any provider in a consistent, interoperable format.</t>
+        <t><strong>Transcription Provider</strong>: A service or system that converts audio or video content to text, such as Whisper, Deepgram, AssemblyAI, Google Cloud Speech-to-Text, Amazon Transcribe, or Azure Speech Services.</t>
+        <t><strong>WTF Attachment</strong>: A vCon attachment with type "wtf_transcription" that contains structured transcription information in World Transcription Format.</t>
+        <t><strong>Segment</strong>: A logical chunk of transcribed content, typically representing sentence or phrase boundaries with associated timing information.</t>
+        <t><strong>Speaker Diarization</strong>: The process of partitioning an audio stream into homogeneous segments according to the speaker identity, enabling "who spoke when" analysis.</t>
+        <t><strong>Compatible Extension</strong>: A vCon extension that introduces additional data without altering the meaning or structure of existing elements, as defined in <xref target="I-D.draft-ietf-vcon-core-00"/>.</t>
+      </section>
+    </section>
+    <section anchor="world-transcription-format-overview">
+      <name>World Transcription Format Overview</name>
+      <t>The World Transcription Format uses a hierarchical JSON structure designed to capture transcription data at multiple levels of granularity while maintaining consistency across different providers.</t>
+      <section anchor="design-principles">
+        <name>Design Principles</name>
+        <t><strong>Completeness</strong>: WTF captures all essential transcription data including text, timing, confidence scores, and speaker information.</t>
+        <t><strong>Consistency</strong>: Provides uniform structure regardless of the underlying transcription provider.</t>
+        <t><strong>Extensibility</strong>: Supports provider-specific features through structured extension fields.</t>
+        <t><strong>Validation</strong>: Includes built-in data integrity checking and quality metrics.</t>
+        <t><strong>Hierarchical Organization</strong>: Natural progression from words to segments to complete transcripts.</t>
+      </section>
+      <section anchor="core-structure">
+        <name>Core Structure</name>
+        <t>WTF uses a hierarchical JSON structure with three required sections and multiple optional enrichment layers:
 <tt>json
 {
   "transcript": { /* Required: Core transcript information */ },
@@ -97,22 +134,30 @@ WTF uses a hierarchical JSON structure with three required sections and multiple
   "quality": { /* Optional: Quality metrics */ },
   "streaming": { /* Optional: Streaming information */ }
 }
-</tt>
-# vCon WTF Extension Definition
-## Extension Classification
-The WTF extension is a <strong>Compatible Extension</strong> as defined in Section 2.5 of <xref target="I-D.draft-ietf-vcon-core-00"/>. This extension:
+</tt></t>
+      </section>
+    </section>
+    <section anchor="vcon-wtf-extension-definition">
+      <name>vCon WTF Extension Definition</name>
+      <section anchor="extension-classification">
+        <name>Extension Classification</name>
+        <t>The WTF extension is a <strong>Compatible Extension</strong> as defined in Section 2.5 of <xref target="I-D.draft-ietf-vcon-core-00"/>. This extension:
 - Introduces transcription data without altering existing vCon semantics
 - Can be safely ignored by implementations that don't support transcription processing
 - Does not require listing in the <tt>must_support</tt> parameter
-- Maintains backward compatibility with existing vCon implementations
-## Extension Registration
-This document defines the "wtf_transcription" extension token for registration in the vCon Extensions Names Registry:
+- Maintains backward compatibility with existing vCon implementations</t>
+      </section>
+      <section anchor="extension-registration">
+        <name>Extension Registration</name>
+        <t>This document defines the "wtf_transcription" extension token for registration in the vCon Extensions Names Registry:
 - <strong>Extension Name</strong>: wtf_transcription
 - <strong>Extension Description</strong>: World Transcription Format for standardized speech-to-text representation with multi-provider support
 - <strong>Change Controller</strong>: IESG
-- <strong>Specification Document</strong>: This document
-## Extension Usage
-vCon instances that include WTF transcription attachments SHOULD include "wtf_transcription" in the <tt>extensions</tt> array:
+- <strong>Specification Document</strong>: This document</t>
+      </section>
+      <section anchor="extension-usage">
+        <name>Extension Usage</name>
+        <t>vCon instances that include WTF transcription attachments SHOULD include "wtf_transcription" in the <tt>extensions</tt> array:
 <tt>json
 {
   "uuid": "01234567-89ab-cdef-0123-456789abcdef",
@@ -133,37 +178,57 @@ vCon instances that include WTF transcription attachments SHOULD include "wtf_tr
     }
   ]
 }
-</tt>
-# WTF Attachment Structure
-## Attachment Container
-Transcription information MUST be included as vCon attachments using the standard attachment object structure defined in Section 4.4 of <xref target="I-D.draft-ietf-vcon-core-00"/>.
-The WTF transcription attachment MUST include:
+</tt></t>
+      </section>
+    </section>
+    <section anchor="wtf-attachment-structure">
+      <name>WTF Attachment Structure</name>
+      <section anchor="attachment-container">
+        <name>Attachment Container</name>
+        <t>Transcription information MUST be included as vCon attachments using the standard attachment object structure defined in Section 4.4 of <xref target="I-D.draft-ietf-vcon-core-00"/>.</t>
+        <t>The WTF transcription attachment MUST include:
 - <strong>type</strong>: MUST be set to "wtf_transcription"
 - <strong>encoding</strong>: MUST be set to "json" for structured transcription data
 - <strong>body</strong>: MUST contain the WTF transcription data structure as defined below
 The WTF transcription attachment SHOULD include:
 - <strong>start</strong>: ISO 8601 timestamp when transcription was created
 - <strong>party</strong>: Index of the party in the vCon parties array (for single-speaker transcription)
-- <strong>dialog</strong>: Index of the associated dialog in the vCon dialog array
-## WTF Body Structure
-The <tt>body</tt> field of the WTF transcription attachment MUST contain a JSON object with the following structure:
-### Required Fields
-#### Transcript Object
-<tt>json
+- <strong>dialog</strong>: Index of the associated dialog in the vCon dialog array</t>
+      </section>
+      <section anchor="wtf-body-structure">
+        <name>WTF Body Structure</name>
+        <t>The <tt>body</tt> field of the WTF transcription attachment MUST contain a JSON object with the following structure:</t>
+        <section anchor="required-fields">
+          <name>Required Fields</name>
+          <section anchor="transcript-object">
+            <name>Transcript Object</name>
+            <t><tt>json
 "transcript": {
   "text": "string",       // Complete transcription text
   "language": "string",   // BCP-47 language code (e.g., "en-US")
   "duration": "number",   // Total audio duration in seconds
   "confidence": "number"  // Overall confidence score [0.0-1.0]
 }
-</tt>
-The transcript object provides the high-level summary of the entire transcription:
-- <strong>text</strong>: The complete, concatenated transcription text
-- <strong>language</strong>: MUST use BCP-47 format <xref target="BCP47"/> (examples: "en-US", "es-MX", "fr-CA")
-- <strong>duration</strong>: Floating-point seconds, MUST be ≥ 0
-- <strong>confidence</strong>: Normalized to [0, 1] range regardless of provider scale
-#### Segments Array
-<tt>json
+</tt></t>
+            <t>The transcript object provides the high-level summary of the entire transcription:</t>
+            <ul spacing="normal">
+              <li>
+                <t><strong>text</strong>: The complete, concatenated transcription text</t>
+              </li>
+              <li>
+                <t><strong>language</strong>: MUST use BCP-47 format <xref target="BCP47"/> (examples: "en-US", "es-MX", "fr-CA")</t>
+              </li>
+              <li>
+                <t><strong>duration</strong>: Floating-point seconds, MUST be ≥ 0</t>
+              </li>
+              <li>
+                <t><strong>confidence</strong>: Normalized to [0, 1] range regardless of provider scale</t>
+              </li>
+            </ul>
+          </section>
+          <section anchor="segments-array">
+            <name>Segments Array</name>
+            <t><tt>json
 "segments": [
   {
     "id": "integer",              // Sequential segment identifier
@@ -175,15 +240,29 @@ The transcript object provides the high-level summary of the entire transcriptio
     "words": ["integer"]          // Optional: Array of word indices
   }
 ]
-</tt>
-Segments represent logical chunks of transcribed content, typically sentence or phrase boundaries:
-- <strong>id</strong>: MUST be unique within the document, typically sequential
-- <strong>start</strong>/<strong>end</strong>: Floating-point seconds, where end &gt; start
-- <strong>text</strong>: SHOULD be trimmed of leading/trailing whitespace
-- <strong>speaker</strong>: Can be integer (0, 1, 2) or string ("Speaker A")
-- <strong>words</strong>: References indices in the words array
-#### Metadata Object
-<tt>json
+</tt></t>
+            <t>Segments represent logical chunks of transcribed content, typically sentence or phrase boundaries:</t>
+            <ul spacing="normal">
+              <li>
+                <t><strong>id</strong>: MUST be unique within the document, typically sequential</t>
+              </li>
+              <li>
+                <t><strong>start</strong>/<strong>end</strong>: Floating-point seconds, where end &gt; start</t>
+              </li>
+              <li>
+                <t><strong>text</strong>: SHOULD be trimmed of leading/trailing whitespace</t>
+              </li>
+              <li>
+                <t><strong>speaker</strong>: Can be integer (0, 1, 2) or string ("Speaker A")</t>
+              </li>
+              <li>
+                <t><strong>words</strong>: References indices in the words array</t>
+              </li>
+            </ul>
+          </section>
+          <section anchor="metadata-object">
+            <name>Metadata Object</name>
+            <t><tt>json
 "metadata": {
   "created_at": "string",        // ISO 8601 timestamp
   "processed_at": "string",      // ISO 8601 timestamp
@@ -199,15 +278,29 @@ Segments represent logical chunks of transcribed content, typically sentence or 
   },
   "options": "object"            // Provider-specific options used
 }
-</tt>
-The metadata object captures processing and source information:
-- <strong>created_at</strong>/<strong>processed_at</strong>: MUST use ISO 8601 format
-- <strong>provider</strong>: Lowercase identifier for supported providers
-- <strong>model</strong>: Provider's model identifier (e.g., "whisper-large-v3", "nova-2")
-- <strong>options</strong>: Preserves provider-specific configuration
-### Optional Fields
-#### Words Array
-<tt>json
+</tt></t>
+            <t>The metadata object captures processing and source information:</t>
+            <ul spacing="normal">
+              <li>
+                <t><strong>created_at</strong>/<strong>processed_at</strong>: MUST use ISO 8601 format</t>
+              </li>
+              <li>
+                <t><strong>provider</strong>: Lowercase identifier for supported providers</t>
+              </li>
+              <li>
+                <t><strong>model</strong>: Provider's model identifier (e.g., "whisper-large-v3", "nova-2")</t>
+              </li>
+              <li>
+                <t><strong>options</strong>: Preserves provider-specific configuration</t>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section anchor="optional-fields">
+          <name>Optional Fields</name>
+          <section anchor="words-array">
+            <name>Words Array</name>
+            <t><tt>json
 "words": [
   {
     "id": "integer",              // Sequential word identifier
@@ -219,9 +312,11 @@ The metadata object captures processing and source information:
     "is_punctuation": "boolean"   // Optional: Punctuation marker
   }
 ]
-</tt>
-#### Speakers Object
-<tt>json
+</tt></t>
+          </section>
+          <section anchor="speakers-object">
+            <name>Speakers Object</name>
+            <t><tt>json
 "speakers": {
   "speaker_id": {
     "id": "integer|string",       // Speaker identifier
@@ -231,9 +326,11 @@ The metadata object captures processing and source information:
     "confidence": "number"        // Diarization confidence [0.0-1.0]
   }
 }
-</tt>
-#### Quality Object
-<tt>json
+</tt></t>
+          </section>
+          <section anchor="quality-object">
+            <name>Quality Object</name>
+            <t><tt>json
 "quality": {
   "audio_quality": "string",      // high, medium, low
   "background_noise": "number",   // Noise level [0.0-1.0]
@@ -244,18 +341,26 @@ The metadata object captures processing and source information:
   "low_confidence_words": "integer",
   "processing_warnings": ["string"]
 }
-</tt>
-#### Extensions Object
-<tt>json
+</tt></t>
+          </section>
+          <section anchor="extensions-object">
+            <name>Extensions Object</name>
+            <t><tt>json
 "extensions": {
   "provider_name": {
     // Provider-specific fields preserved during conversion
   }
 }
-</tt>
-# Provider Integration Guidelines
-## Supported Providers
-The WTF extension supports integration with major transcription providers:
+</tt></t>
+          </section>
+        </section>
+      </section>
+    </section>
+    <section anchor="provider-integration-guidelines">
+      <name>Provider Integration Guidelines</name>
+      <section anchor="supported-providers">
+        <name>Supported Providers</name>
+        <t>The WTF extension supports integration with major transcription providers:
 - <strong>Whisper</strong>: OpenAI's open-source speech recognition system
 - <strong>Deepgram</strong>: Real-time speech-to-text API
 - <strong>AssemblyAI</strong>: AI-powered transcription and audio intelligence
@@ -265,17 +370,22 @@ The WTF extension supports integration with major transcription providers:
 - <strong>Rev.ai</strong>: Automated and human transcription services
 - <strong>Speechmatics</strong>: Real-time and batch speech recognition
 - <strong>Wav2Vec2</strong>: Facebook's self-supervised speech recognition model
-- <strong>Parakeet</strong>: NVIDIA's speech recognition toolkit
-## Conversion Requirements
-When converting from provider-specific formats to WTF:
+- <strong>Parakeet</strong>: NVIDIA's speech recognition toolkit</t>
+      </section>
+      <section anchor="conversion-requirements">
+        <name>Conversion Requirements</name>
+        <t>When converting from provider-specific formats to WTF:
 1. <strong>Normalize confidence scores</strong> to [0.0, 1.0] range
 2. <strong>Convert timestamps</strong> to floating-point seconds
 3. <strong>Standardize language codes</strong> to BCP-47 format
 4. <strong>Preserve provider-specific features</strong> in extensions field
-5. <strong>Validate output</strong> against WTF schema requirements
-## Provider-Specific Mappings
-### Whisper Integration
-<tt>json
+5. <strong>Validate output</strong> against WTF schema requirements</t>
+      </section>
+      <section anchor="provider-specific-mappings">
+        <name>Provider-Specific Mappings</name>
+        <section anchor="whisper-integration">
+          <name>Whisper Integration</name>
+          <t><tt>json
 {
   "extensions": {
     "whisper": {
@@ -287,9 +397,11 @@ When converting from provider-specific formats to WTF:
     }
   }
 }
-</tt>
-### Deepgram Integration
-<tt>json
+</tt></t>
+        </section>
+        <section anchor="deepgram-integration">
+          <name>Deepgram Integration</name>
+          <t><tt>json
 {
   "extensions": {
     "deepgram": {
@@ -299,10 +411,15 @@ When converting from provider-specific formats to WTF:
     }
   }
 }
-</tt>
-# Quality and Confidence Metrics
-## Confidence Score Normalization
-All confidence scores MUST be normalized to the [0.0, 1.0] range:
+</tt></t>
+        </section>
+      </section>
+    </section>
+    <section anchor="quality-and-confidence-metrics">
+      <name>Quality and Confidence Metrics</name>
+      <section anchor="confidence-score-normalization">
+        <name>Confidence Score Normalization</name>
+        <t>All confidence scores MUST be normalized to the [0.0, 1.0] range:
 - <strong>1.0</strong>: Highest confidence (perfect recognition)
 - <strong>0.9-1.0</strong>: High confidence
 - <strong>0.7-0.9</strong>: Medium confidence<br/>
@@ -311,9 +428,11 @@ All confidence scores MUST be normalized to the [0.0, 1.0] range:
 Provider-specific scales are converted during import:
 - Percentage (0-100) → divide by 100
 - Log probability → exponential transformation
-- Custom scales → linear normalization
-## Quality Metrics
-The quality object provides assessment metrics:
+- Custom scales → linear normalization</t>
+      </section>
+      <section anchor="quality-metrics">
+        <name>Quality Metrics</name>
+        <t>The quality object provides assessment metrics:
 - <strong>audio_quality</strong>: Categorical assessment (high/medium/low)
 - <strong>background_noise</strong>: Noise level [0.0-1.0]
 - <strong>multiple_speakers</strong>: Boolean indicator of multi-speaker content
@@ -321,33 +440,49 @@ The quality object provides assessment metrics:
 - <strong>silence_ratio</strong>: Percentage of audio that is silence
 - <strong>average_confidence</strong>: Mean confidence across all words/segments
 - <strong>low_confidence_words</strong>: Count of words below 0.5 confidence
-- <strong>processing_warnings</strong>: Array of processing issues or notices
-# Security Considerations
-## Data Privacy
-Transcription data often contains sensitive personal information. Implementations SHOULD:
+- <strong>processing_warnings</strong>: Array of processing issues or notices</t>
+      </section>
+    </section>
+    <section anchor="security-considerations">
+      <name>Security Considerations</name>
+      <section anchor="data-privacy">
+        <name>Data Privacy</name>
+        <t>Transcription data often contains sensitive personal information. Implementations SHOULD:
 - Apply appropriate access controls to WTF transcription attachments
 - Consider encryption requirements for transcription data at rest and in transit
 - Implement data retention policies consistent with privacy regulations
-- Provide mechanisms for transcription data redaction or anonymization
-## Provider-Specific Security
-When integrating with external transcription providers:
+- Provide mechanisms for transcription data redaction or anonymization</t>
+      </section>
+      <section anchor="provider-specific-security">
+        <name>Provider-Specific Security</name>
+        <t>When integrating with external transcription providers:
 - Validate provider credentials and API security
 - Implement secure communication channels (TLS 1.2 or higher)
 - Consider data residency requirements for audio processing
-- Audit provider data handling practices and compliance certifications
-## Integrity Protection
-WTF transcription attachments SHOULD be integrity protected using vCon signing mechanisms as defined in <xref target="I-D.draft-ietf-vcon-core-00"/> to prevent unauthorized modification of transcription data.
-## Temporal Validation
-Implementations SHOULD validate that transcription timestamps are consistent with the associated dialog timing information to detect potential tampering or synchronization issues.
-# IANA Considerations
-## vCon Extensions Names Registry
-This document requests IANA to register the following extension in the vCon Extensions Names Registry established by <xref target="I-D.draft-ietf-vcon-core-00"/>:
+- Audit provider data handling practices and compliance certifications</t>
+      </section>
+      <section anchor="integrity-protection">
+        <name>Integrity Protection</name>
+        <t>WTF transcription attachments SHOULD be integrity protected using vCon signing mechanisms as defined in <xref target="I-D.draft-ietf-vcon-core-00"/> to prevent unauthorized modification of transcription data.</t>
+      </section>
+      <section anchor="temporal-validation">
+        <name>Temporal Validation</name>
+        <t>Implementations SHOULD validate that transcription timestamps are consistent with the associated dialog timing information to detect potential tampering or synchronization issues.</t>
+      </section>
+    </section>
+    <section anchor="iana-considerations">
+      <name>IANA Considerations</name>
+      <section anchor="vcon-extensions-names-registry">
+        <name>vCon Extensions Names Registry</name>
+        <t>This document requests IANA to register the following extension in the vCon Extensions Names Registry established by <xref target="I-D.draft-ietf-vcon-core-00"/>:
 - <strong>Extension Name</strong>: wtf_transcription
 - <strong>Extension Description</strong>: World Transcription Format for standardized speech-to-text representation with multi-provider support
 - <strong>Change Controller</strong>: IESG
-- <strong>Specification Document</strong>: This document
-## WTF Attachment Type Values Registry
-This document requests IANA to establish a new registry for WTF attachment type values with the following initial registration:
+- <strong>Specification Document</strong>: This document</t>
+      </section>
+      <section anchor="wtf-attachment-type-values-registry">
+        <name>WTF Attachment Type Values Registry</name>
+        <t>This document requests IANA to establish a new registry for WTF attachment type values with the following initial registration:
 - <strong>Type Value</strong>: wtf_transcription
 - <strong>Description</strong>: Structured transcription records using World Transcription Format
 - <strong>Change Controller</strong>: IESG
@@ -356,17 +491,23 @@ Registration Template:
 <strong>Type Value</strong>: The string value used as the attachment type identifier
 <strong>Description</strong>: Brief description of the attachment type and its purpose
 <strong>Change Controller</strong>: For Standards Track RFCs, list "IESG". For others, give the name of the responsible party.
-<strong>Specification Document(s)</strong>: Reference to defining documents with URIs where available
-## WTF Provider Registry
-This document requests IANA to establish a new registry for WTF transcription providers with initial registrations for supported providers:
+<strong>Specification Document(s)</strong>: Reference to defining documents with URIs where available</t>
+      </section>
+      <section anchor="wtf-provider-registry">
+        <name>WTF Provider Registry</name>
+        <t>This document requests IANA to establish a new registry for WTF transcription providers with initial registrations for supported providers:
 - <strong>Provider Name</strong>: whisper
 - <strong>Description</strong>: OpenAI Whisper speech recognition system
 - <strong>Change Controller</strong>: IESG
 - <strong>Specification Document</strong>: This document
-(Additional provider registrations would be added for each supported provider)
-# Examples
-## Basic Two-Party Call Transcription
-<tt>json
+(Additional provider registrations would be added for each supported provider)</t>
+      </section>
+    </section>
+    <section anchor="examples">
+      <name>Examples</name>
+      <section anchor="basic-two-party-call-transcription">
+        <name>Basic Two-Party Call Transcription</name>
+        <t><tt>json
 {
   "uuid": "01928e10-193e-8231-b9a2-279e0d16bc46",
   "vcon": "0.0.2",
@@ -508,9 +649,11 @@ This document requests IANA to establish a new registry for WTF transcription pr
     }
   ]
 }
-</tt>
-## Multi-Provider Transcription Comparison
-<tt>json
+</tt></t>
+      </section>
+      <section anchor="multi-provider-transcription-comparison">
+        <name>Multi-Provider Transcription Comparison</name>
+        <t><tt>json
 {
   "attachments": [
     {
@@ -593,6 +736,7 @@ This document requests IANA to establish a new registry for WTF transcription pr
   ]
 }
 </tt></t>
+      </section>
     </section>
   </middle>
   <back>
@@ -702,7 +846,7 @@ This document requests IANA to establish a new registry for WTF transcription pr
         </reference>
       </references>
     </references>
-    <?line 668?>
+    <?line 752?>
 
 <section numbered="false" anchor="acknowledgements">
       <name>Acknowledgements</name>
@@ -723,176 +867,176 @@ This document requests IANA to establish a new registry for WTF transcription pr
     </section>
   </back>
   <!-- ##markdown-source:
-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
-z/yOBef3b+ke0hqXB95/A35Dh2NBZgAA
+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
 
 -->
 

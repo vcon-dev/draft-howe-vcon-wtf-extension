@@ -117,38 +117,62 @@ The WTF extension is designed as a Compatible Extension that introduces transcri
 Virtualized Conversations (vCon) [I-D.draft-ietf-vcon-core-00] provide a standardized container format for conversation data, enabling interoperability across different communication platforms and modalities. As speech-to-text technology becomes increasingly important for conversation analysis, compliance, and accessibility, there is a growing need for standardized transcription representation within vCon containers.
 
 Current transcription services each use proprietary formats, making it difficult to:
+
 * Switch between transcription providers without data conversion
 * Perform comparative analysis across different providers
 * Maintain consistent data processing pipelines
 * Preserve transcription metadata during system migrations
 * Ensure long-term accessibility and archival compliance
+
 This document defines the World Transcription Format (WTF) extension for vCon, which addresses these challenges by providing:
+
 * A unified schema for transcription data from any speech-to-text provider
 * Hierarchical organization from words to segments to complete transcripts
 * Extensible fields for provider-specific features
 * Built-in quality metrics and confidence scoring
 * Support for real-time and batch transcription workflows
 * Consistent export capabilities to standard subtitle and caption formats
+
 The WTF extension enables organizations to standardize their transcription workflows while maintaining the flexibility to use multiple providers and preserve provider-specific enhancements.
+
 ## Requirements Language
+
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.
+
 # Conventions and Definitions
+
 ## Core Terms
+
 **World Transcription Format (WTF)**: A standardized JSON schema for representing speech-to-text transcription data from any provider in a consistent, interoperable format.
+
 **Transcription Provider**: A service or system that converts audio or video content to text, such as Whisper, Deepgram, AssemblyAI, Google Cloud Speech-to-Text, Amazon Transcribe, or Azure Speech Services.
+
 **WTF Attachment**: A vCon attachment with type "wtf_transcription" that contains structured transcription information in World Transcription Format.
+
 **Segment**: A logical chunk of transcribed content, typically representing sentence or phrase boundaries with associated timing information.
+
 **Speaker Diarization**: The process of partitioning an audio stream into homogeneous segments according to the speaker identity, enabling "who spoke when" analysis.
+
 **Compatible Extension**: A vCon extension that introduces additional data without altering the meaning or structure of existing elements, as defined in [I-D.draft-ietf-vcon-core-00].
+
 # World Transcription Format Overview
+
 The World Transcription Format uses a hierarchical JSON structure designed to capture transcription data at multiple levels of granularity while maintaining consistency across different providers.
+
 ## Design Principles
+
 **Completeness**: WTF captures all essential transcription data including text, timing, confidence scores, and speaker information.
+
 **Consistency**: Provides uniform structure regardless of the underlying transcription provider.
+
 **Extensibility**: Supports provider-specific features through structured extension fields.
+
 **Validation**: Includes built-in data integrity checking and quality metrics.
+
 **Hierarchical Organization**: Natural progression from words to segments to complete transcripts.
+
 ## Core Structure
+
 WTF uses a hierarchical JSON structure with three required sections and multiple optional enrichment layers:
 ```json
 {
@@ -164,20 +188,27 @@ WTF uses a hierarchical JSON structure with three required sections and multiple
   "streaming": { /* Optional: Streaming information */ }
 }
 ```
+
 # vCon WTF Extension Definition
+
 ## Extension Classification
+
 The WTF extension is a **Compatible Extension** as defined in Section 2.5 of [I-D.draft-ietf-vcon-core-00]. This extension:
 - Introduces transcription data without altering existing vCon semantics
 - Can be safely ignored by implementations that don't support transcription processing
 - Does not require listing in the `must_support` parameter
 - Maintains backward compatibility with existing vCon implementations
+
 ## Extension Registration
+
 This document defines the "wtf_transcription" extension token for registration in the vCon Extensions Names Registry:
 - **Extension Name**: wtf_transcription
 - **Extension Description**: World Transcription Format for standardized speech-to-text representation with multi-provider support
 - **Change Controller**: IESG
 - **Specification Document**: This document
+
 ## Extension Usage
+
 vCon instances that include WTF transcription attachments SHOULD include "wtf_transcription" in the `extensions` array:
 ```json
 {
@@ -200,9 +231,13 @@ vCon instances that include WTF transcription attachments SHOULD include "wtf_tr
   ]
 }
 ```
+
 # WTF Attachment Structure
+
 ## Attachment Container
+
 Transcription information MUST be included as vCon attachments using the standard attachment object structure defined in Section 4.4 of [I-D.draft-ietf-vcon-core-00].
+
 The WTF transcription attachment MUST include:
 - **type**: MUST be set to "wtf_transcription"
 - **encoding**: MUST be set to "json" for structured transcription data
@@ -211,9 +246,13 @@ The WTF transcription attachment SHOULD include:
 - **start**: ISO 8601 timestamp when transcription was created
 - **party**: Index of the party in the vCon parties array (for single-speaker transcription)
 - **dialog**: Index of the associated dialog in the vCon dialog array
+
 ## WTF Body Structure
+
 The `body` field of the WTF transcription attachment MUST contain a JSON object with the following structure:
+
 ### Required Fields
+
 #### Transcript Object
 ```json
 "transcript": {
@@ -223,11 +262,14 @@ The `body` field of the WTF transcription attachment MUST contain a JSON object 
   "confidence": "number"  // Overall confidence score [0.0-1.0]
 }
 ```
+
 The transcript object provides the high-level summary of the entire transcription:
+
 - **text**: The complete, concatenated transcription text
 - **language**: MUST use BCP-47 format [BCP47] (examples: "en-US", "es-MX", "fr-CA")
 - **duration**: Floating-point seconds, MUST be ≥ 0
 - **confidence**: Normalized to [0, 1] range regardless of provider scale
+
 #### Segments Array
 ```json
 "segments": [
@@ -242,12 +284,15 @@ The transcript object provides the high-level summary of the entire transcriptio
   }
 ]
 ```
+
 Segments represent logical chunks of transcribed content, typically sentence or phrase boundaries:
+
 - **id**: MUST be unique within the document, typically sequential
 - **start**/**end**: Floating-point seconds, where end > start
 - **text**: SHOULD be trimmed of leading/trailing whitespace
 - **speaker**: Can be integer (0, 1, 2) or string ("Speaker A")
 - **words**: References indices in the words array
+
 #### Metadata Object
 ```json
 "metadata": {
@@ -266,12 +311,16 @@ Segments represent logical chunks of transcribed content, typically sentence or 
   "options": "object"            // Provider-specific options used
 }
 ```
+
 The metadata object captures processing and source information:
+
 - **created_at**/**processed_at**: MUST use ISO 8601 format
 - **provider**: Lowercase identifier for supported providers
 - **model**: Provider's model identifier (e.g., "whisper-large-v3", "nova-2")
 - **options**: Preserves provider-specific configuration
+
 ### Optional Fields
+
 #### Words Array
 ```json
 "words": [
@@ -286,6 +335,7 @@ The metadata object captures processing and source information:
   }
 ]
 ```
+
 #### Speakers Object
 ```json
 "speakers": {
@@ -298,6 +348,7 @@ The metadata object captures processing and source information:
   }
 }
 ```
+
 #### Quality Object
 ```json
 "quality": {
@@ -311,6 +362,7 @@ The metadata object captures processing and source information:
   "processing_warnings": ["string"]
 }
 ```
+
 #### Extensions Object
 ```json
 "extensions": {
@@ -319,8 +371,11 @@ The metadata object captures processing and source information:
   }
 }
 ```
+
 # Provider Integration Guidelines
+
 ## Supported Providers
+
 The WTF extension supports integration with major transcription providers:
 - **Whisper**: OpenAI's open-source speech recognition system
 - **Deepgram**: Real-time speech-to-text API
@@ -332,14 +387,18 @@ The WTF extension supports integration with major transcription providers:
 - **Speechmatics**: Real-time and batch speech recognition
 - **Wav2Vec2**: Facebook's self-supervised speech recognition model
 - **Parakeet**: NVIDIA's speech recognition toolkit
+
 ## Conversion Requirements
+
 When converting from provider-specific formats to WTF:
 1. **Normalize confidence scores** to [0.0, 1.0] range
 2. **Convert timestamps** to floating-point seconds
 3. **Standardize language codes** to BCP-47 format
 4. **Preserve provider-specific features** in extensions field
 5. **Validate output** against WTF schema requirements
+
 ## Provider-Specific Mappings
+
 ### Whisper Integration
 ```json
 {
@@ -354,6 +413,7 @@ When converting from provider-specific formats to WTF:
   }
 }
 ```
+
 ### Deepgram Integration
 ```json
 {
@@ -366,8 +426,11 @@ When converting from provider-specific formats to WTF:
   }
 }
 ```
+
 # Quality and Confidence Metrics
+
 ## Confidence Score Normalization
+
 All confidence scores MUST be normalized to the [0.0, 1.0] range:
 - **1.0**: Highest confidence (perfect recognition)
 - **0.9-1.0**: High confidence
@@ -378,7 +441,9 @@ Provider-specific scales are converted during import:
 - Percentage (0-100) → divide by 100
 - Log probability → exponential transformation
 - Custom scales → linear normalization
+
 ## Quality Metrics
+
 The quality object provides assessment metrics:
 - **audio_quality**: Categorical assessment (high/medium/low)
 - **background_noise**: Noise level [0.0-1.0]
@@ -388,31 +453,45 @@ The quality object provides assessment metrics:
 - **average_confidence**: Mean confidence across all words/segments
 - **low_confidence_words**: Count of words below 0.5 confidence
 - **processing_warnings**: Array of processing issues or notices
+
 # Security Considerations
+
 ## Data Privacy
+
 Transcription data often contains sensitive personal information. Implementations SHOULD:
 - Apply appropriate access controls to WTF transcription attachments
 - Consider encryption requirements for transcription data at rest and in transit
 - Implement data retention policies consistent with privacy regulations
 - Provide mechanisms for transcription data redaction or anonymization
+
 ## Provider-Specific Security
+
 When integrating with external transcription providers:
 - Validate provider credentials and API security
 - Implement secure communication channels (TLS 1.2 or higher)
 - Consider data residency requirements for audio processing
 - Audit provider data handling practices and compliance certifications
+
 ## Integrity Protection
+
 WTF transcription attachments SHOULD be integrity protected using vCon signing mechanisms as defined in [I-D.draft-ietf-vcon-core-00] to prevent unauthorized modification of transcription data.
+
 ## Temporal Validation
+
 Implementations SHOULD validate that transcription timestamps are consistent with the associated dialog timing information to detect potential tampering or synchronization issues.
+
 # IANA Considerations
+
 ## vCon Extensions Names Registry
+
 This document requests IANA to register the following extension in the vCon Extensions Names Registry established by [I-D.draft-ietf-vcon-core-00]:
 - **Extension Name**: wtf_transcription
 - **Extension Description**: World Transcription Format for standardized speech-to-text representation with multi-provider support
 - **Change Controller**: IESG
 - **Specification Document**: This document
+
 ## WTF Attachment Type Values Registry
+
 This document requests IANA to establish a new registry for WTF attachment type values with the following initial registration:
 - **Type Value**: wtf_transcription
 - **Description**: Structured transcription records using World Transcription Format
@@ -423,14 +502,18 @@ Registration Template:
 **Description**: Brief description of the attachment type and its purpose
 **Change Controller**: For Standards Track RFCs, list "IESG". For others, give the name of the responsible party.
 **Specification Document(s)**: Reference to defining documents with URIs where available
+
 ## WTF Provider Registry
+
 This document requests IANA to establish a new registry for WTF transcription providers with initial registrations for supported providers:
 - **Provider Name**: whisper
 - **Description**: OpenAI Whisper speech recognition system
 - **Change Controller**: IESG
 - **Specification Document**: This document
 (Additional provider registrations would be added for each supported provider)
+
 # Examples
+
 ## Basic Two-Party Call Transcription
 ```json
 {
@@ -575,6 +658,7 @@ This document requests IANA to establish a new registry for WTF transcription pr
   ]
 }
 ```
+
 ## Multi-Provider Transcription Comparison
 ```json
 {
