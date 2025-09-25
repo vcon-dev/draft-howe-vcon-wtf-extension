@@ -2,7 +2,7 @@
 title: "vCon World Transcription Format Extension"
 abbrev: "vCon WTF Extension"
 category: std
-docname: draft-howe-vcon-wtf-extension
+docname: draft-howe-vcon-wtf-extension-00
 ipr: trust200902
 area: "Applications and Real-Time"
 workgroup: "vCon"
@@ -13,7 +13,7 @@ venue:
   mail: "vcon@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/vcon/"
   github: "vcon-dev/draft-howe-vcon-wtf-extension"
-  latest: "https://vcon-dev.github.io/draft-howe-vcon-wtf-extension/draft-howe-vcon-wtf-extension-latest.html"
+  latest: "https://vcon-dev.github.io/draft-howe-vcon-wtf-extension/draft-howe-vcon-wtf-extension-00.html"
 
 stand_alone: yes
 smart_quotes: no
@@ -26,6 +26,8 @@ author:
     email: ghostofbasho@gmail.com
 
 date: 2025-09-25
+seriesinfo:
+  Internet-Draft: draft-howe-vcon-wtf-extension-00
 
 normative:
   RFC2119:
@@ -150,10 +152,6 @@ This document defines the World Transcription Format (WTF) extension for vCon, w
 * Consistent export capabilities to standard subtitle and caption formats
 
 The WTF extension enables organizations to standardize their transcription workflows while maintaining the flexibility to use multiple providers and preserve provider-specific enhancements.
-
-## Requirements Language
-
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all capitals, as shown here.
 
 # Conventions and Definitions
 
