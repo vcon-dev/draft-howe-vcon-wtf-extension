@@ -121,7 +121,7 @@
       <section anchor="core-structure">
         <name>Core Structure</name>
         <t>WTF uses a hierarchical JSON structure with three required sections and multiple optional enrichment layers:
-<tt>json
+    <tt>json
 {
   "transcript": { /* Required: Core transcript information */ },
   "segments": [ /* Required: Time-aligned text segments */ ],
@@ -134,7 +134,7 @@
   "quality": { /* Optional: Quality metrics */ },
   "streaming": { /* Optional: Streaming information */ }
 }
-</tt></t>
+          </tt></t>
       </section>
     </section>
     <section anchor="vcon-wtf-extension-definition">
@@ -178,7 +178,7 @@
       <section anchor="extension-usage">
         <name>Extension Usage</name>
         <t>vCon instances that include WTF transcription attachments SHOULD include "wtf_transcription" in the <tt>extensions</tt> array:
-<tt>json
+    <tt>json
 {
   "uuid": "01234567-89ab-cdef-0123-456789abcdef",
   "extensions": ["wtf_transcription"],
@@ -198,7 +198,7 @@
     }
   ]
 }
-</tt></t>
+          </tt></t>
       </section>
     </section>
     <section anchor="wtf-attachment-structure">
@@ -238,14 +238,10 @@
           <name>Required Fields</name>
           <section anchor="transcript-object">
             <name>Transcript Object</name>
-            <t><tt>json
-"transcript": {
-  "text": "string",       // Complete transcription text
-  "language": "string",   // BCP-47 language code (e.g., "en-US")
-  "duration": "number",   // Total audio duration in seconds
-  "confidence": "number"  // Overall confidence score [0.0-1.0]
-}
-</tt></t>
+            <artwork><![CDATA[
+```json "transcript": {   "text": "string",       // Complete transcription text   "language": "string",   // BCP-47 language code (e.g., "en-US")   "duration": "number",   // Total audio duration in seconds   "confidence": "number"  // Overall confidence score [0.0-1.0] }
+```
+]]></artwork>
             <t>The transcript object provides the high-level summary of the entire transcription:</t>
             <ul spacing="normal">
               <li>
@@ -264,19 +260,17 @@
           </section>
           <section anchor="segments-array">
             <name>Segments Array</name>
-            <t><tt>json
-"segments": [
-  {
-    "id": "integer",              // Sequential segment identifier
-    "start": "number",            // Start time in seconds
-    "end": "number",              // End time in seconds
-    "text": "string",             // Segment text content
-    "confidence": "number",       // Segment-level confidence [0.0-1.0]
-    "speaker": "integer|string",  // Optional: Speaker identifier
-    "words": ["integer"]          // Optional: Array of word indices
-  }
-]
-</tt></t>
+            <artwork><![CDATA[
+```json "segments": [   {
+"id": "integer",              // Sequential segment identifier
+"start": "number",            // Start time in seconds
+"end": "number",              // End time in seconds
+"text": "string",             // Segment text content
+"confidence": "number",       // Segment-level confidence [0.0-1.0]
+"speaker": "integer|string",  // Optional: Speaker identifier
+"words": ["integer"]          // Optional: Array of word indices   } ]
+```
+]]></artwork>
             <t>Segments represent logical chunks of transcribed content, typically sentence or phrase boundaries:</t>
             <ul spacing="normal">
               <li>
@@ -298,23 +292,15 @@
           </section>
           <section anchor="metadata-object">
             <name>Metadata Object</name>
-            <t><tt>json
-"metadata": {
-  "created_at": "string",        // ISO 8601 timestamp
-  "processed_at": "string",      // ISO 8601 timestamp
-  "provider": "string",          // Provider name (lowercase)
-  "model": "string",             // Model/version identifier
-  "processing_time": "number",   // Optional: Processing duration in seconds
-  "audio": {
-    "duration": "number",        // Source audio duration in seconds
-    "sample_rate": "integer",    // Optional: Sample rate in Hz
-    "channels": "integer",       // Optional: Number of channels
-    "format": "string",          // Optional: Audio format
-    "bitrate": "integer"         // Optional: Bitrate in kbps
-  },
-  "options": "object"            // Provider-specific options used
-}
-</tt></t>
+            <artwork><![CDATA[
+```json "metadata": {   "created_at": "string",        // ISO 8601 timestamp   "processed_at": "string",      // ISO 8601 timestamp   "provider": "string",          // Provider name (lowercase)   "model": "string",             // Model/version identifier   "processing_time": "number",   // Optional: Processing duration in seconds   "audio": {
+"duration": "number",        // Source audio duration in seconds
+"sample_rate": "integer",    // Optional: Sample rate in Hz
+"channels": "integer",       // Optional: Number of channels
+"format": "string",          // Optional: Audio format
+"bitrate": "integer"         // Optional: Bitrate in kbps   },   "options": "object"            // Provider-specific options used }
+```
+]]></artwork>
             <t>The metadata object captures processing and source information:</t>
             <ul spacing="normal">
               <li>
@@ -336,58 +322,44 @@
           <name>Optional Fields</name>
           <section anchor="words-array">
             <name>Words Array</name>
-            <t><tt>json
-"words": [
-  {
-    "id": "integer",              // Sequential word identifier
-    "start": "number",            // Word start time in seconds
-    "end": "number",              // Word end time in seconds
-    "text": "string",             // Word text
-    "confidence": "number",       // Word-level confidence [0.0-1.0]
-    "speaker": "integer|string",  // Optional: Speaker identifier
-    "is_punctuation": "boolean"   // Optional: Punctuation marker
-  }
-]
-</tt></t>
+            <artwork><![CDATA[
+```json "words": [   {
+"id": "integer",              // Sequential word identifier
+"start": "number",            // Word start time in seconds
+"end": "number",              // Word end time in seconds
+"text": "string",             // Word text
+"confidence": "number",       // Word-level confidence [0.0-1.0]
+"speaker": "integer|string",  // Optional: Speaker identifier
+"is_punctuation": "boolean"   // Optional: Punctuation marker   } ]
+```
+]]></artwork>
           </section>
           <section anchor="speakers-object">
             <name>Speakers Object</name>
-            <t><tt>json
-"speakers": {
-  "speaker_id": {
-    "id": "integer|string",       // Speaker identifier
-    "label": "string",            // Human-readable speaker name
-    "segments": ["integer"],      // Array of segment IDs for this speaker
-    "total_time": "number",       // Total speaking time in seconds
-    "confidence": "number"        // Diarization confidence [0.0-1.0]
-  }
-}
-</tt></t>
+            <artwork><![CDATA[
+```json "speakers": {   "speaker_id": {
+"id": "integer|string",       // Speaker identifier
+"label": "string",            // Human-readable speaker name
+"segments": ["integer"],      // Array of segment IDs for this speaker
+"total_time": "number",       // Total speaking time in seconds
+"confidence": "number"        // Diarization confidence [0.0-1.0]   } }
+```
+]]></artwork>
           </section>
           <section anchor="quality-object">
             <name>Quality Object</name>
-            <t><tt>json
-"quality": {
-  "audio_quality": "string",      // high, medium, low
-  "background_noise": "number",   // Noise level [0.0-1.0]
-  "multiple_speakers": "boolean",
-  "overlapping_speech": "boolean",
-  "silence_ratio": "number",      // Percentage of silence
-  "average_confidence": "number",
-  "low_confidence_words": "integer",
-  "processing_warnings": ["string"]
-}
-</tt></t>
+            <artwork><![CDATA[
+```json "quality": {   "audio_quality": "string",      // high, medium, low   "background_noise": "number",   // Noise level [0.0-1.0]   "multiple_speakers": "boolean",   "overlapping_speech": "boolean",   "silence_ratio": "number",      // Percentage of silence   "average_confidence": "number",   "low_confidence_words": "integer",   "processing_warnings": ["string"] }
+```
+]]></artwork>
           </section>
           <section anchor="extensions-object">
             <name>Extensions Object</name>
-            <t><tt>json
-"extensions": {
-  "provider_name": {
-    // Provider-specific fields preserved during conversion
-  }
-}
-</tt></t>
+            <artwork><![CDATA[
+```json "extensions": {   "provider_name": {
+// Provider-specific fields preserved during conversion   } }
+```
+]]></artwork>
           </section>
         </section>
       </section>
@@ -454,33 +426,29 @@
         <name>Provider-Specific Mappings</name>
         <section anchor="whisper-integration">
           <name>Whisper Integration</name>
-          <t><tt>json
-{
-  "extensions": {
-    "whisper": {
-      "tokens": ["array of token IDs"],
-      "temperature": "number",
-      "compression_ratio": "number",
-      "avg_logprob": "number",
-      "no_speech_prob": "number"
-    }
-  }
-}
-</tt></t>
+          <artwork><![CDATA[
+```json {   "extensions": {
+"whisper": {
+  "tokens": ["array of token IDs"],
+  "temperature": "number",
+  "compression_ratio": "number",
+  "avg_logprob": "number",
+  "no_speech_prob": "number"
+}   } }
+```
+]]></artwork>
         </section>
         <section anchor="deepgram-integration">
           <name>Deepgram Integration</name>
-          <t><tt>json
-{
-  "extensions": {
-    "deepgram": {
-      "utterances": ["array of utterance objects"],
-      "paragraphs": ["array of paragraph objects"],
-      "search_terms": ["array of detected search terms"]
-    }
-  }
-}
-</tt></t>
+          <artwork><![CDATA[
+```json {   "extensions": {
+"deepgram": {
+  "utterances": ["array of utterance objects"],
+  "paragraphs": ["array of paragraph objects"],
+  "search_terms": ["array of detected search terms"]
+}   } }
+```
+]]></artwork>
         </section>
       </section>
     </section>
@@ -664,235 +632,223 @@ Registration Template:
       <name>Examples</name>
       <section anchor="basic-two-party-call-transcription">
         <name>Basic Two-Party Call Transcription</name>
-        <t><tt>json
+        <artwork><![CDATA[
+```json {   "uuid": "01928e10-193e-8231-b9a2-279e0d16bc46",   "vcon": "0.0.2",   "extensions": ["wtf_transcription"],   "created_at": "2025-01-02T12:00:00Z",   "parties": [
 {
-  "uuid": "01928e10-193e-8231-b9a2-279e0d16bc46",
-  "vcon": "0.0.2",
-  "extensions": ["wtf_transcription"],
-  "created_at": "2025-01-02T12:00:00Z",
-  "parties": [
-    {
-      "tel": "+1-555-123-4567",
-      "name": "Alice"
-    },
-    {
-      "tel": "+1-555-987-6543",
-      "name": "Bob"
-    }
-  ],
-  "dialog": [
-    {
-      "type": "recording",
-      "start": "2025-01-02T12:15:30Z",
+  "tel": "+1-555-123-4567",
+  "name": "Alice"
+},
+{
+  "tel": "+1-555-987-6543",
+  "name": "Bob"
+}   ],   "dialog": [
+{
+  "type": "recording",
+  "start": "2025-01-02T12:15:30Z",
+  "duration": 65.2,
+  "parties": [0, 1],
+  "mediatype": "audio/wav",
+  "filename": "call-recording.wav"
+}   ],   "attachments": [
+{
+  "type": "wtf_transcription",
+  "start": "2025-01-02T12:16:35Z",
+  "dialog": 0,
+  "encoding": "json",
+  "body": {
+    "transcript": {
+      "text": "Hello, this is Alice from customer service. How can I help you today? Hi Alice, I'm having trouble with my account. Can you help me reset my password?",
+      "language": "en-US",
       "duration": 65.2,
-      "parties": [0, 1],
-      "mediatype": "audio/wav",
-      "filename": "call-recording.wav"
-    }
-  ],
-  "attachments": [
-    {
-      "type": "wtf_transcription",
-      "start": "2025-01-02T12:16:35Z",
-      "dialog": 0,
-      "encoding": "json",
-      "body": {
-        "transcript": {
-          "text": "Hello, this is Alice from customer service. How can I help you today? Hi Alice, I'm having trouble with my account. Can you help me reset my password?",
-          "language": "en-US",
-          "duration": 65.2,
-          "confidence": 0.92
-        },
-        "segments": [
+      "confidence": 0.92
+    },
+    "segments": [
+      {
+        "id": 0,
+        "start": 0.5,
+        "end": 4.8,
+        "text": "Hello, this is Alice from customer service. How can I help you today?",
+        "confidence": 0.95,
+        "speaker": 0,
+        "words": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+      },
+      {
+        "id": 1,
+        "start": 5.2,
+        "end": 9.1,
+        "text": "Hi Alice, I'm having trouble with my account. Can you help me reset my password?",
+        "confidence": 0.88,
+        "speaker": 1,
+        "words": [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+      }
+    ],
+    "words": [
+      {
+        "id": 0,
+        "start": 0.5,
+        "end": 0.8,
+        "text": "Hello",
+        "confidence": 0.98,
+        "speaker": 0,
+        "is_punctuation": false
+      },
+      {
+        "id": 1,
+        "start": 0.9,
+        "end": 1.1,
+        "text": ",",
+        "confidence": 0.95,
+        "speaker": 0,
+        "is_punctuation": true
+      }
+      // Additional words...
+    ],
+    "speakers": {
+      "0": {
+        "id": 0,
+        "label": "Alice (Customer Service)",
+        "segments": [0],
+        "total_time": 4.3,
+        "confidence": 0.95
+      },
+      "1": {
+        "id": 1,
+        "label": "Bob (Customer)",
+        "segments": [1],
+        "total_time": 3.9,
+        "confidence": 0.88
+      }
+    },
+    "metadata": {
+      "created_at": "2025-01-02T12:15:30Z",
+      "processed_at": "2025-01-02T12:16:35Z",
+      "provider": "deepgram",
+      "model": "nova-2",
+      "processing_time": 12.5,
+      "audio": {
+        "duration": 65.2,
+        "sample_rate": 8000,
+        "channels": 1,
+        "format": "wav",
+        "bitrate": 128
+      },
+      "options": {
+        "punctuate": true,
+        "diarize": true,
+        "language": "en"
+      }
+    },
+    "quality": {
+      "audio_quality": "high",
+      "background_noise": 0.1,
+      "multiple_speakers": true,
+      "overlapping_speech": false,
+      "silence_ratio": 0.15,
+      "average_confidence": 0.92,
+      "low_confidence_words": 0,
+      "processing_warnings": []
+    },
+    "extensions": {
+      "deepgram": {
+        "utterances": [
           {
-            "id": 0,
             "start": 0.5,
             "end": 4.8,
-            "text": "Hello, this is Alice from customer service. How can I help you today?",
             "confidence": 0.95,
-            "speaker": 0,
-            "words": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-          },
-          {
-            "id": 1,
-            "start": 5.2,
-            "end": 9.1,
-            "text": "Hi Alice, I'm having trouble with my account. Can you help me reset my password?",
-            "confidence": 0.88,
-            "speaker": 1,
-            "words": [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+            "channel": 0,
+            "transcript": "Hello, this is Alice from customer service. How can I help you today?"
           }
-        ],
-        "words": [
-          {
-            "id": 0,
-            "start": 0.5,
-            "end": 0.8,
-            "text": "Hello",
-            "confidence": 0.98,
-            "speaker": 0,
-            "is_punctuation": false
-          },
-          {
-            "id": 1,
-            "start": 0.9,
-            "end": 1.1,
-            "text": ",",
-            "confidence": 0.95,
-            "speaker": 0,
-            "is_punctuation": true
-          }
-          // Additional words...
-        ],
-        "speakers": {
-          "0": {
-            "id": 0,
-            "label": "Alice (Customer Service)",
-            "segments": [0],
-            "total_time": 4.3,
-            "confidence": 0.95
-          },
-          "1": {
-            "id": 1,
-            "label": "Bob (Customer)",
-            "segments": [1],
-            "total_time": 3.9,
-            "confidence": 0.88
-          }
-        },
-        "metadata": {
-          "created_at": "2025-01-02T12:15:30Z",
-          "processed_at": "2025-01-02T12:16:35Z",
-          "provider": "deepgram",
-          "model": "nova-2",
-          "processing_time": 12.5,
-          "audio": {
-            "duration": 65.2,
-            "sample_rate": 8000,
-            "channels": 1,
-            "format": "wav",
-            "bitrate": 128
-          },
-          "options": {
-            "punctuate": true,
-            "diarize": true,
-            "language": "en"
-          }
-        },
-        "quality": {
-          "audio_quality": "high",
-          "background_noise": 0.1,
-          "multiple_speakers": true,
-          "overlapping_speech": false,
-          "silence_ratio": 0.15,
-          "average_confidence": 0.92,
-          "low_confidence_words": 0,
-          "processing_warnings": []
-        },
-        "extensions": {
-          "deepgram": {
-            "utterances": [
-              {
-                "start": 0.5,
-                "end": 4.8,
-                "confidence": 0.95,
-                "channel": 0,
-                "transcript": "Hello, this is Alice from customer service. How can I help you today?"
-              }
-            ]
-          }
-        }
+        ]
       }
     }
-  ]
-}
-</tt></t>
+  }
+}   ] }
+```
+]]></artwork>
       </section>
       <section anchor="multi-provider-transcription-comparison">
         <name>Multi-Provider Transcription Comparison</name>
-        <t><tt>json
+        <artwork><![CDATA[
+```json {   "attachments": [
 {
-  "attachments": [
-    {
-      "type": "wtf_transcription",
-      "dialog": 0,
-      "encoding": "json",
-      "body": {
-        "transcript": {
-          "text": "The quick brown fox jumps over the lazy dog.",
-          "language": "en-US",
-          "duration": 3.5,
-          "confidence": 0.96
-        },
-        "segments": [
-          {
-            "id": 0,
-            "start": 0.0,
-            "end": 3.5,
-            "text": "The quick brown fox jumps over the lazy dog.",
-            "confidence": 0.96,
-            "speaker": 0
-          }
-        ],
-        "metadata": {
-          "created_at": "2025-01-02T12:00:00Z",
-          "processed_at": "2025-01-02T12:00:15Z",
-          "provider": "whisper",
-          "model": "whisper-large-v3",
-          "processing_time": 15.2
-        },
-        "extensions": {
-          "whisper": {
-            "temperature": 0.0,
-            "compression_ratio": 2.1,
-            "avg_logprob": -0.25,
-            "no_speech_prob": 0.01
-          }
-        }
-      }
+  "type": "wtf_transcription",
+  "dialog": 0,
+  "encoding": "json",
+  "body": {
+    "transcript": {
+      "text": "The quick brown fox jumps over the lazy dog.",
+      "language": "en-US",
+      "duration": 3.5,
+      "confidence": 0.96
     },
-    {
-      "type": "wtf_transcription",
-      "dialog": 0,
-      "encoding": "json",
-      "body": {
-        "transcript": {
-          "text": "The quick brown fox jumps over the lazy dog.",
-          "language": "en-US",
-          "duration": 3.5,
-          "confidence": 0.94
-        },
-        "segments": [
-          {
-            "id": 0,
-            "start": 0.0,
-            "end": 3.5,
-            "text": "The quick brown fox jumps over the lazy dog.",
-            "confidence": 0.94,
-            "speaker": 0
-          }
-        ],
-        "metadata": {
-          "created_at": "2025-01-02T12:00:00Z",
-          "processed_at": "2025-01-02T12:00:08Z",
-          "provider": "deepgram",
-          "model": "nova-2",
-          "processing_time": 8.1
-        },
-        "extensions": {
-          "deepgram": {
-            "model_info": {
-              "name": "nova-2",
-              "version": "2024-01-09",
-              "uuid": "4d892fb6-7cc1-4e7a-a1b3-1c2e3f4a5b6c"
-            }
-          }
+    "segments": [
+      {
+        "id": 0,
+        "start": 0.0,
+        "end": 3.5,
+        "text": "The quick brown fox jumps over the lazy dog.",
+        "confidence": 0.96,
+        "speaker": 0
+      }
+    ],
+    "metadata": {
+      "created_at": "2025-01-02T12:00:00Z",
+      "processed_at": "2025-01-02T12:00:15Z",
+      "provider": "whisper",
+      "model": "whisper-large-v3",
+      "processing_time": 15.2
+    },
+    "extensions": {
+      "whisper": {
+        "temperature": 0.0,
+        "compression_ratio": 2.1,
+        "avg_logprob": -0.25,
+        "no_speech_prob": 0.01
+      }
+    }
+  }
+},
+{
+  "type": "wtf_transcription",
+  "dialog": 0,
+  "encoding": "json",
+  "body": {
+    "transcript": {
+      "text": "The quick brown fox jumps over the lazy dog.",
+      "language": "en-US",
+      "duration": 3.5,
+      "confidence": 0.94
+    },
+    "segments": [
+      {
+        "id": 0,
+        "start": 0.0,
+        "end": 3.5,
+        "text": "The quick brown fox jumps over the lazy dog.",
+        "confidence": 0.94,
+        "speaker": 0
+      }
+    ],
+    "metadata": {
+      "created_at": "2025-01-02T12:00:00Z",
+      "processed_at": "2025-01-02T12:00:08Z",
+      "provider": "deepgram",
+      "model": "nova-2",
+      "processing_time": 8.1
+    },
+    "extensions": {
+      "deepgram": {
+        "model_info": {
+          "name": "nova-2",
+          "version": "2024-01-09",
+          "uuid": "4d892fb6-7cc1-4e7a-a1b3-1c2e3f4a5b6c"
         }
       }
     }
-  ]
-}
-</tt></t>
+  }
+}   ] }
+```
+]]></artwork>
       </section>
     </section>
   </middle>
@@ -1061,181 +1017,181 @@ Registration Template:
   </back>
   <!-- ##markdown-source:
 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
-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
-ucplczXhF0IMYbUY/XB1lukLafmAH6oac7sFyZ+t/H09kd70mnKrFGfrbrO0
-eFscrfHRXzppkWsuGTpvtj1SL/w6EvzkuHyLyVql6hGXSRFhtxy+8KTfPKf3
-wpvHfoou5IXu2SFGPZcZhE03y8S7pN62EwzMK0q5rhX2cHSghpC6HO4o72C0
-M/TGh3LkjZ4dqkEw3B/7u/tctUajTxD9QX/0W3fH1lpe+b7mb4fe3t6eZzp1
-nfoJV7u7xxC+Kl006W1a4vDgmbe/t7vTXOJ5Mi6rLvUG3fZGXDaHdPPxmQ24
-zmX+/l5/VGnM1YSg5ij7AJNSafalMHJ7KR/KBSeYxumTYHeKZ3Hr47zawX6r
-NuP9o50995S/qqm42WZYPtEXqK8UOMAe367BvyQFXIb1qcaA7p/L0H3xCssi
-kMmeiZmKFmKVFGCwArn6TrwKGbInzr6dQ/D9wO+KJQXaWg4pVvQ2JGSwfeqv
-QWBaZU6GWeU4YwGhIya339kzEa5uh6PusHMfr5EEela5bRr0D0f24cdyXr39
-zfzjEszcmQ561UHDR8jDa0/4gnu3f1Ab/6qU79YWr5+3jlR5h10/iG0R0N1O
-PbHTE7s9sdcT+z3xrCcOeuIQHuFjeD6ECUOYMdy9ddb52HuEfMM15KvxzZLv
-sF+HsOT7LUWuScmDOhtLStYxtJQcAuGGQLkhkG4ItBsB7UZIW6DdCGg3AvKO
-gL4jmDeCeSOYN4J5OzBvZ1ihq/351hFbt6tjE9E/V2YHm2X2MZlbT6k6Io1+
-iImMMvU15AnQaD3acK089b6eKjWOBcmAauUmtzyUwQ1xtN/vt7K71tdhxwe1
-gXVst70bbGqenBgzo280n9Yp4JrFwW2dbm73xW5/5zHqreNqd7gG/TqjLPoQ
-ZpTIb0R6uBHpnYaMNHS+lWmu56j1aZYrbQjbapEMza83am6MCgyE7dG011OV
-GbYPU/ebtW3o9FkOR1VzUOuetMMb3G2jPfJgMKhLodP/WOdw2dnoBmb6Ydm7
-OBwdrBWmskGxhrVRSKXVsbY6vxW85mE1/ug+KhTVXp8qPd2eHyx/VrnS0t8z
-qFqs1j6eOs7trTxkXCvT6u08sFdNBNqadjCMqsZn7Y07g3UC5zbu3LZSsOUO
-1jCqeROrn1TvYyvP6r6DD7/OCzIG7dEbPXvEM/AcFvOmGaanlbj8K0WCtV0+
-Vn5vDybMT20vEX4jLqgKaKsD1SoVvbWdhlk9N/61edFvnvDw9Wfo3wv8dji+
-n/yz+KnAejYqDRWKIvlhJYJk2v/SNGSnZknrArP/22Uh9ScsxzuNSO9Xk6Pt
-WOsjpEdj2S9xpE79w87f7EgBYrjJkZpWl3Y/2uzlfsSjgnv8TPPW7LWx/HI7
-aZp8bmulGTWC3WovjTfoj+py0Winga2Gn2I86jWj/1d10ond/52qvvs/QdUH
-B791zHzQH7by90viF9r6Du9IG89EWWNtwYue6/5KTYddosNhc5opXe8GB4ej
-yXjfe+b7Q29XPZOeHI53vKE/UjuTXbk33verEcXHVr6ujyDws7sYzmK1/di/
-j5NlpIKp7lX85Yib9FTw910KS7sf8S7iBoKmex3TVP/MgX4FAP+Lrx3qdJkv
-1iuXCHRlbb5USRFV9b7EcqbPLSapwqtqfSOdz+ovWZfdD9zNkK8MJiF+Y2tR
-5PjHKsr7VdnoMOmbc2VmB8J6qf8UCv2lFGfNiVIBko0ux6bALe4kdD/xxt86
-EwuJAW9MG1xVGm8f+0hrgE1XyUK/BCvn/OVf1D7zEQfni1+61bRCZbqFh6UD
-he+miNfUO9TOVOwazM3MTMy5W4Y7Hlo+ecmf3QNPl5v3u8OULu6wG+MBCLE0
-X9um+0k9J1PuHoH5lA5+5GaF7xAlacatKeMV/2GRFzcvhRYo7qXQ3zpz8OE9
-yvthZwNJX0nTV4MB3aI5F2L0WSM7G9flS7MefrYMmeX00LdMNk/t9EoLfQtA
-+dyCbG6Yb1lDA5yfn9COLV3ybRvTNPwjCSWuaxrlW6Bt3zx+gAxbU3KtlLZJ
-vgUIn7n71ZriWyDcGeI8nIfgYRDSaYhvQ05hm5v5yrbdzml/bwHibvjqcf4b
-oKJqkgBqAAA=
+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
+dTv/DVG8SdloagAA
 
 -->
 

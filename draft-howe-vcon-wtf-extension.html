@@ -1406,7 +1406,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-core-structure" class="section-name selfRef">Core Structure</a>
         </h3>
 <p id="section-3.2-1">WTF uses a hierarchical JSON structure with three required sections and multiple optional enrichment layers:
-<code>json
+    <code>json
 {
   "transcript": { /* Required: Core transcript information */ },
   "segments": [ /* Required: Time-aligned text segments */ ],
@@ -1419,7 +1419,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
   "quality": { /* Optional: Quality metrics */ },
   "streaming": { /* Optional: Streaming information */ }
 }
-</code><a href="#section-3.2-1" class="pilcrow">¶</a></p>
+          </code><a href="#section-3.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1479,7 +1479,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-extension-usage" class="section-name selfRef">Extension Usage</a>
         </h3>
 <p id="section-4.3-1">vCon instances that include WTF transcription attachments SHOULD include "wtf_transcription" in the <code>extensions</code> array:
-<code>json
+    <code>json
 {
   "uuid": "01234567-89ab-cdef-0123-456789abcdef",
   "extensions": ["wtf_transcription"],
@@ -1499,7 +1499,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
     }
   ]
 }
-</code><a href="#section-4.3-1" class="pilcrow">¶</a></p>
+          </code><a href="#section-4.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1557,14 +1557,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <h5 id="name-transcript-object">
 <a href="#section-5.2.1.1" class="section-number selfRef">5.2.1.1. </a><a href="#name-transcript-object" class="section-name selfRef">Transcript Object</a>
             </h5>
-<p id="section-5.2.1.1-1"><code>json
-"transcript": {
-  "text": "string",       // Complete transcription text
-  "language": "string",   // BCP-47 language code (e.g., "en-US")
-  "duration": "number",   // Total audio duration in seconds
-  "confidence": "number"  // Overall confidence score [0.0-1.0]
-}
-</code><a href="#section-5.2.1.1-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-5.2.1.1-1">
+<pre>
+```json "transcript": {   "text": "string",       // Complete transcription text   "language": "string",   // BCP-47 language code (e.g., "en-US")   "duration": "number",   // Total audio duration in seconds   "confidence": "number"  // Overall confidence score [0.0-1.0] }
+```
+</pre><a href="#section-5.2.1.1-1" class="pilcrow">¶</a>
+</div>
 <p id="section-5.2.1.1-2">The transcript object provides the high-level summary of the entire transcription:<a href="#section-5.2.1.1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5.2.1.1-3.1">
@@ -1587,19 +1585,19 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <h5 id="name-segments-array">
 <a href="#section-5.2.1.2" class="section-number selfRef">5.2.1.2. </a><a href="#name-segments-array" class="section-name selfRef">Segments Array</a>
             </h5>
-<p id="section-5.2.1.2-1"><code>json
-"segments": [
-  {
-    "id": "integer",              // Sequential segment identifier
-    "start": "number",            // Start time in seconds
-    "end": "number",              // End time in seconds
-    "text": "string",             // Segment text content
-    "confidence": "number",       // Segment-level confidence [0.0-1.0]
-    "speaker": "integer|string",  // Optional: Speaker identifier
-    "words": ["integer"]          // Optional: Array of word indices
-  }
-]
-</code><a href="#section-5.2.1.2-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-5.2.1.2-1">
+<pre>
+```json "segments": [   {
+"id": "integer",              // Sequential segment identifier
+"start": "number",            // Start time in seconds
+"end": "number",              // End time in seconds
+"text": "string",             // Segment text content
+"confidence": "number",       // Segment-level confidence [0.0-1.0]
+"speaker": "integer|string",  // Optional: Speaker identifier
+"words": ["integer"]          // Optional: Array of word indices   } ]
+```
+</pre><a href="#section-5.2.1.2-1" class="pilcrow">¶</a>
+</div>
 <p id="section-5.2.1.2-2">Segments represent logical chunks of transcribed content, typically sentence or phrase boundaries:<a href="#section-5.2.1.2-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5.2.1.2-3.1">
@@ -1625,23 +1623,17 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <h5 id="name-metadata-object">
 <a href="#section-5.2.1.3" class="section-number selfRef">5.2.1.3. </a><a href="#name-metadata-object" class="section-name selfRef">Metadata Object</a>
             </h5>
-<p id="section-5.2.1.3-1"><code>json
-"metadata": {
-  "created_at": "string",        // ISO 8601 timestamp
-  "processed_at": "string",      // ISO 8601 timestamp
-  "provider": "string",          // Provider name (lowercase)
-  "model": "string",             // Model/version identifier
-  "processing_time": "number",   // Optional: Processing duration in seconds
-  "audio": {
-    "duration": "number",        // Source audio duration in seconds
-    "sample_rate": "integer",    // Optional: Sample rate in Hz
-    "channels": "integer",       // Optional: Number of channels
-    "format": "string",          // Optional: Audio format
-    "bitrate": "integer"         // Optional: Bitrate in kbps
-  },
-  "options": "object"            // Provider-specific options used
-}
-</code><a href="#section-5.2.1.3-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-5.2.1.3-1">
+<pre>
+```json "metadata": {   "created_at": "string",        // ISO 8601 timestamp   "processed_at": "string",      // ISO 8601 timestamp   "provider": "string",          // Provider name (lowercase)   "model": "string",             // Model/version identifier   "processing_time": "number",   // Optional: Processing duration in seconds   "audio": {
+"duration": "number",        // Source audio duration in seconds
+"sample_rate": "integer",    // Optional: Sample rate in Hz
+"channels": "integer",       // Optional: Number of channels
+"format": "string",          // Optional: Audio format
+"bitrate": "integer"         // Optional: Bitrate in kbps   },   "options": "object"            // Provider-specific options used }
+```
+</pre><a href="#section-5.2.1.3-1" class="pilcrow">¶</a>
+</div>
 <p id="section-5.2.1.3-2">The metadata object captures processing and source information:<a href="#section-5.2.1.3-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5.2.1.3-3.1">
@@ -1671,19 +1663,19 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <h5 id="name-words-array">
 <a href="#section-5.2.2.1" class="section-number selfRef">5.2.2.1. </a><a href="#name-words-array" class="section-name selfRef">Words Array</a>
             </h5>
-<p id="section-5.2.2.1-1"><code>json
-"words": [
-  {
-    "id": "integer",              // Sequential word identifier
-    "start": "number",            // Word start time in seconds
-    "end": "number",              // Word end time in seconds
-    "text": "string",             // Word text
-    "confidence": "number",       // Word-level confidence [0.0-1.0]
-    "speaker": "integer|string",  // Optional: Speaker identifier
-    "is_punctuation": "boolean"   // Optional: Punctuation marker
-  }
-]
-</code><a href="#section-5.2.2.1-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-5.2.2.1-1">
+<pre>
+```json "words": [   {
+"id": "integer",              // Sequential word identifier
+"start": "number",            // Word start time in seconds
+"end": "number",              // Word end time in seconds
+"text": "string",             // Word text
+"confidence": "number",       // Word-level confidence [0.0-1.0]
+"speaker": "integer|string",  // Optional: Speaker identifier
+"is_punctuation": "boolean"   // Optional: Punctuation marker   } ]
+```
+</pre><a href="#section-5.2.2.1-1" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 <div id="speakers-object">
@@ -1691,17 +1683,17 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <h5 id="name-speakers-object">
 <a href="#section-5.2.2.2" class="section-number selfRef">5.2.2.2. </a><a href="#name-speakers-object" class="section-name selfRef">Speakers Object</a>
             </h5>
-<p id="section-5.2.2.2-1"><code>json
-"speakers": {
-  "speaker_id": {
-    "id": "integer|string",       // Speaker identifier
-    "label": "string",            // Human-readable speaker name
-    "segments": ["integer"],      // Array of segment IDs for this speaker
-    "total_time": "number",       // Total speaking time in seconds
-    "confidence": "number"        // Diarization confidence [0.0-1.0]
-  }
-}
-</code><a href="#section-5.2.2.2-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-5.2.2.2-1">
+<pre>
+```json "speakers": {   "speaker_id": {
+"id": "integer|string",       // Speaker identifier
+"label": "string",            // Human-readable speaker name
+"segments": ["integer"],      // Array of segment IDs for this speaker
+"total_time": "number",       // Total speaking time in seconds
+"confidence": "number"        // Diarization confidence [0.0-1.0]   } }
+```
+</pre><a href="#section-5.2.2.2-1" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 <div id="quality-object">
@@ -1709,18 +1701,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <h5 id="name-quality-object">
 <a href="#section-5.2.2.3" class="section-number selfRef">5.2.2.3. </a><a href="#name-quality-object" class="section-name selfRef">Quality Object</a>
             </h5>
-<p id="section-5.2.2.3-1"><code>json
-"quality": {
-  "audio_quality": "string",      // high, medium, low
-  "background_noise": "number",   // Noise level [0.0-1.0]
-  "multiple_speakers": "boolean",
-  "overlapping_speech": "boolean",
-  "silence_ratio": "number",      // Percentage of silence
-  "average_confidence": "number",
-  "low_confidence_words": "integer",
-  "processing_warnings": ["string"]
-}
-</code><a href="#section-5.2.2.3-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-5.2.2.3-1">
+<pre>
+```json "quality": {   "audio_quality": "string",      // high, medium, low   "background_noise": "number",   // Noise level [0.0-1.0]   "multiple_speakers": "boolean",   "overlapping_speech": "boolean",   "silence_ratio": "number",      // Percentage of silence   "average_confidence": "number",   "low_confidence_words": "integer",   "processing_warnings": ["string"] }
+```
+</pre><a href="#section-5.2.2.3-1" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 <div id="extensions-object">
@@ -1728,13 +1714,13 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <h5 id="name-extensions-object">
 <a href="#section-5.2.2.4" class="section-number selfRef">5.2.2.4. </a><a href="#name-extensions-object" class="section-name selfRef">Extensions Object</a>
             </h5>
-<p id="section-5.2.2.4-1"><code>json
-"extensions": {
-  "provider_name": {
-    // Provider-specific fields preserved during conversion
-  }
-}
-</code><a href="#section-5.2.2.4-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-5.2.2.4-1">
+<pre>
+```json "extensions": {   "provider_name": {
+// Provider-specific fields preserved during conversion   } }
+```
+</pre><a href="#section-5.2.2.4-1" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 </section>
@@ -1823,19 +1809,19 @@ svg :is([fill="white"], [fill^="#fff"]) {
           <h4 id="name-whisper-integration">
 <a href="#section-6.3.1" class="section-number selfRef">6.3.1. </a><a href="#name-whisper-integration" class="section-name selfRef">Whisper Integration</a>
           </h4>
-<p id="section-6.3.1-1"><code>json
-{
-  "extensions": {
-    "whisper": {
-      "tokens": ["array of token IDs"],
-      "temperature": "number",
-      "compression_ratio": "number",
-      "avg_logprob": "number",
-      "no_speech_prob": "number"
-    }
-  }
-}
-</code><a href="#section-6.3.1-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-6.3.1-1">
+<pre>
+```json {   "extensions": {
+"whisper": {
+  "tokens": ["array of token IDs"],
+  "temperature": "number",
+  "compression_ratio": "number",
+  "avg_logprob": "number",
+  "no_speech_prob": "number"
+}   } }
+```
+</pre><a href="#section-6.3.1-1" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 <div id="deepgram-integration">
@@ -1843,17 +1829,17 @@ svg :is([fill="white"], [fill^="#fff"]) {
           <h4 id="name-deepgram-integration">
 <a href="#section-6.3.2" class="section-number selfRef">6.3.2. </a><a href="#name-deepgram-integration" class="section-name selfRef">Deepgram Integration</a>
           </h4>
-<p id="section-6.3.2-1"><code>json
-{
-  "extensions": {
-    "deepgram": {
-      "utterances": ["array of utterance objects"],
-      "paragraphs": ["array of paragraph objects"],
-      "search_terms": ["array of detected search terms"]
-    }
-  }
-}
-</code><a href="#section-6.3.2-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-6.3.2-1">
+<pre>
+```json {   "extensions": {
+"deepgram": {
+  "utterances": ["array of utterance objects"],
+  "paragraphs": ["array of paragraph objects"],
+  "search_terms": ["array of detected search terms"]
+}   } }
+```
+</pre><a href="#section-6.3.2-1" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 </section>
@@ -2094,149 +2080,141 @@ Registration Template:
         <h3 id="name-basic-two-party-call-transc">
 <a href="#section-10.1" class="section-number selfRef">10.1. </a><a href="#name-basic-two-party-call-transc" class="section-name selfRef">Basic Two-Party Call Transcription</a>
         </h3>
-<p id="section-10.1-1"><code>json
+<div class="alignLeft art-text artwork" id="section-10.1-1">
+<pre>
+```json {   "uuid": "01928e10-193e-8231-b9a2-279e0d16bc46",   "vcon": "0.0.2",   "extensions": ["wtf_transcription"],   "created_at": "2025-01-02T12:00:00Z",   "parties": [
 {
-  "uuid": "01928e10-193e-8231-b9a2-279e0d16bc46",
-  "vcon": "0.0.2",
-  "extensions": ["wtf_transcription"],
-  "created_at": "2025-01-02T12:00:00Z",
-  "parties": [
-    {
-      "tel": "+1-555-123-4567",
-      "name": "Alice"
-    },
-    {
-      "tel": "+1-555-987-6543",
-      "name": "Bob"
-    }
-  ],
-  "dialog": [
-    {
-      "type": "recording",
-      "start": "2025-01-02T12:15:30Z",
+  "tel": "+1-555-123-4567",
+  "name": "Alice"
+},
+{
+  "tel": "+1-555-987-6543",
+  "name": "Bob"
+}   ],   "dialog": [
+{
+  "type": "recording",
+  "start": "2025-01-02T12:15:30Z",
+  "duration": 65.2,
+  "parties": [0, 1],
+  "mediatype": "audio/wav",
+  "filename": "call-recording.wav"
+}   ],   "attachments": [
+{
+  "type": "wtf_transcription",
+  "start": "2025-01-02T12:16:35Z",
+  "dialog": 0,
+  "encoding": "json",
+  "body": {
+    "transcript": {
+      "text": "Hello, this is Alice from customer service. How can I help you today? Hi Alice, I'm having trouble with my account. Can you help me reset my password?",
+      "language": "en-US",
       "duration": 65.2,
-      "parties": [0, 1],
-      "mediatype": "audio/wav",
-      "filename": "call-recording.wav"
-    }
-  ],
-  "attachments": [
-    {
-      "type": "wtf_transcription",
-      "start": "2025-01-02T12:16:35Z",
-      "dialog": 0,
-      "encoding": "json",
-      "body": {
-        "transcript": {
-          "text": "Hello, this is Alice from customer service. How can I help you today? Hi Alice, I'm having trouble with my account. Can you help me reset my password?",
-          "language": "en-US",
-          "duration": 65.2,
-          "confidence": 0.92
-        },
-        "segments": [
+      "confidence": 0.92
+    },
+    "segments": [
+      {
+        "id": 0,
+        "start": 0.5,
+        "end": 4.8,
+        "text": "Hello, this is Alice from customer service. How can I help you today?",
+        "confidence": 0.95,
+        "speaker": 0,
+        "words": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+      },
+      {
+        "id": 1,
+        "start": 5.2,
+        "end": 9.1,
+        "text": "Hi Alice, I'm having trouble with my account. Can you help me reset my password?",
+        "confidence": 0.88,
+        "speaker": 1,
+        "words": [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+      }
+    ],
+    "words": [
+      {
+        "id": 0,
+        "start": 0.5,
+        "end": 0.8,
+        "text": "Hello",
+        "confidence": 0.98,
+        "speaker": 0,
+        "is_punctuation": false
+      },
+      {
+        "id": 1,
+        "start": 0.9,
+        "end": 1.1,
+        "text": ",",
+        "confidence": 0.95,
+        "speaker": 0,
+        "is_punctuation": true
+      }
+      // Additional words...
+    ],
+    "speakers": {
+      "0": {
+        "id": 0,
+        "label": "Alice (Customer Service)",
+        "segments": [0],
+        "total_time": 4.3,
+        "confidence": 0.95
+      },
+      "1": {
+        "id": 1,
+        "label": "Bob (Customer)",
+        "segments": [1],
+        "total_time": 3.9,
+        "confidence": 0.88
+      }
+    },
+    "metadata": {
+      "created_at": "2025-01-02T12:15:30Z",
+      "processed_at": "2025-01-02T12:16:35Z",
+      "provider": "deepgram",
+      "model": "nova-2",
+      "processing_time": 12.5,
+      "audio": {
+        "duration": 65.2,
+        "sample_rate": 8000,
+        "channels": 1,
+        "format": "wav",
+        "bitrate": 128
+      },
+      "options": {
+        "punctuate": true,
+        "diarize": true,
+        "language": "en"
+      }
+    },
+    "quality": {
+      "audio_quality": "high",
+      "background_noise": 0.1,
+      "multiple_speakers": true,
+      "overlapping_speech": false,
+      "silence_ratio": 0.15,
+      "average_confidence": 0.92,
+      "low_confidence_words": 0,
+      "processing_warnings": []
+    },
+    "extensions": {
+      "deepgram": {
+        "utterances": [
           {
-            "id": 0,
             "start": 0.5,
             "end": 4.8,
-            "text": "Hello, this is Alice from customer service. How can I help you today?",
             "confidence": 0.95,
-            "speaker": 0,
-            "words": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-          },
-          {
-            "id": 1,
-            "start": 5.2,
-            "end": 9.1,
-            "text": "Hi Alice, I'm having trouble with my account. Can you help me reset my password?",
-            "confidence": 0.88,
-            "speaker": 1,
-            "words": [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+            "channel": 0,
+            "transcript": "Hello, this is Alice from customer service. How can I help you today?"
           }
-        ],
-        "words": [
-          {
-            "id": 0,
-            "start": 0.5,
-            "end": 0.8,
-            "text": "Hello",
-            "confidence": 0.98,
-            "speaker": 0,
-            "is_punctuation": false
-          },
-          {
-            "id": 1,
-            "start": 0.9,
-            "end": 1.1,
-            "text": ",",
-            "confidence": 0.95,
-            "speaker": 0,
-            "is_punctuation": true
-          }
-          // Additional words...
-        ],
-        "speakers": {
-          "0": {
-            "id": 0,
-            "label": "Alice (Customer Service)",
-            "segments": [0],
-            "total_time": 4.3,
-            "confidence": 0.95
-          },
-          "1": {
-            "id": 1,
-            "label": "Bob (Customer)",
-            "segments": [1],
-            "total_time": 3.9,
-            "confidence": 0.88
-          }
-        },
-        "metadata": {
-          "created_at": "2025-01-02T12:15:30Z",
-          "processed_at": "2025-01-02T12:16:35Z",
-          "provider": "deepgram",
-          "model": "nova-2",
-          "processing_time": 12.5,
-          "audio": {
-            "duration": 65.2,
-            "sample_rate": 8000,
-            "channels": 1,
-            "format": "wav",
-            "bitrate": 128
-          },
-          "options": {
-            "punctuate": true,
-            "diarize": true,
-            "language": "en"
-          }
-        },
-        "quality": {
-          "audio_quality": "high",
-          "background_noise": 0.1,
-          "multiple_speakers": true,
-          "overlapping_speech": false,
-          "silence_ratio": 0.15,
-          "average_confidence": 0.92,
-          "low_confidence_words": 0,
-          "processing_warnings": []
-        },
-        "extensions": {
-          "deepgram": {
-            "utterances": [
-              {
-                "start": 0.5,
-                "end": 4.8,
-                "confidence": 0.95,
-                "channel": 0,
-                "transcript": "Hello, this is Alice from customer service. How can I help you today?"
-              }
-            ]
-          }
-        }
+        ]
       }
     }
-  ]
-}
-</code><a href="#section-10.1-1" class="pilcrow">¶</a></p>
+  }
+}   ] }
+```
+</pre><a href="#section-10.1-1" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 <div id="multi-provider-transcription-comparison">
@@ -2244,89 +2222,89 @@ Registration Template:
         <h3 id="name-multi-provider-transcriptio">
 <a href="#section-10.2" class="section-number selfRef">10.2. </a><a href="#name-multi-provider-transcriptio" class="section-name selfRef">Multi-Provider Transcription Comparison</a>
         </h3>
-<p id="section-10.2-1"><code>json
+<div class="alignLeft art-text artwork" id="section-10.2-1">
+<pre>
+```json {   "attachments": [
 {
-  "attachments": [
-    {
-      "type": "wtf_transcription",
-      "dialog": 0,
-      "encoding": "json",
-      "body": {
-        "transcript": {
-          "text": "The quick brown fox jumps over the lazy dog.",
-          "language": "en-US",
-          "duration": 3.5,
-          "confidence": 0.96
-        },
-        "segments": [
-          {
-            "id": 0,
-            "start": 0.0,
-            "end": 3.5,
-            "text": "The quick brown fox jumps over the lazy dog.",
-            "confidence": 0.96,
-            "speaker": 0
-          }
-        ],
-        "metadata": {
-          "created_at": "2025-01-02T12:00:00Z",
-          "processed_at": "2025-01-02T12:00:15Z",
-          "provider": "whisper",
-          "model": "whisper-large-v3",
-          "processing_time": 15.2
-        },
-        "extensions": {
-          "whisper": {
-            "temperature": 0.0,
-            "compression_ratio": 2.1,
-            "avg_logprob": -0.25,
-            "no_speech_prob": 0.01
-          }
-        }
-      }
+  "type": "wtf_transcription",
+  "dialog": 0,
+  "encoding": "json",
+  "body": {
+    "transcript": {
+      "text": "The quick brown fox jumps over the lazy dog.",
+      "language": "en-US",
+      "duration": 3.5,
+      "confidence": 0.96
     },
-    {
-      "type": "wtf_transcription",
-      "dialog": 0,
-      "encoding": "json",
-      "body": {
-        "transcript": {
-          "text": "The quick brown fox jumps over the lazy dog.",
-          "language": "en-US",
-          "duration": 3.5,
-          "confidence": 0.94
-        },
-        "segments": [
-          {
-            "id": 0,
-            "start": 0.0,
-            "end": 3.5,
-            "text": "The quick brown fox jumps over the lazy dog.",
-            "confidence": 0.94,
-            "speaker": 0
-          }
-        ],
-        "metadata": {
-          "created_at": "2025-01-02T12:00:00Z",
-          "processed_at": "2025-01-02T12:00:08Z",
-          "provider": "deepgram",
-          "model": "nova-2",
-          "processing_time": 8.1
-        },
-        "extensions": {
-          "deepgram": {
-            "model_info": {
-              "name": "nova-2",
-              "version": "2024-01-09",
-              "uuid": "4d892fb6-7cc1-4e7a-a1b3-1c2e3f4a5b6c"
-            }
-          }
+    "segments": [
+      {
+        "id": 0,
+        "start": 0.0,
+        "end": 3.5,
+        "text": "The quick brown fox jumps over the lazy dog.",
+        "confidence": 0.96,
+        "speaker": 0
+      }
+    ],
+    "metadata": {
+      "created_at": "2025-01-02T12:00:00Z",
+      "processed_at": "2025-01-02T12:00:15Z",
+      "provider": "whisper",
+      "model": "whisper-large-v3",
+      "processing_time": 15.2
+    },
+    "extensions": {
+      "whisper": {
+        "temperature": 0.0,
+        "compression_ratio": 2.1,
+        "avg_logprob": -0.25,
+        "no_speech_prob": 0.01
+      }
+    }
+  }
+},
+{
+  "type": "wtf_transcription",
+  "dialog": 0,
+  "encoding": "json",
+  "body": {
+    "transcript": {
+      "text": "The quick brown fox jumps over the lazy dog.",
+      "language": "en-US",
+      "duration": 3.5,
+      "confidence": 0.94
+    },
+    "segments": [
+      {
+        "id": 0,
+        "start": 0.0,
+        "end": 3.5,
+        "text": "The quick brown fox jumps over the lazy dog.",
+        "confidence": 0.94,
+        "speaker": 0
+      }
+    ],
+    "metadata": {
+      "created_at": "2025-01-02T12:00:00Z",
+      "processed_at": "2025-01-02T12:00:08Z",
+      "provider": "deepgram",
+      "model": "nova-2",
+      "processing_time": 8.1
+    },
+    "extensions": {
+      "deepgram": {
+        "model_info": {
+          "name": "nova-2",
+          "version": "2024-01-09",
+          "uuid": "4d892fb6-7cc1-4e7a-a1b3-1c2e3f4a5b6c"
         }
       }
     }
-  ]
-}
-</code><a href="#section-10.2-1" class="pilcrow">¶</a></p>
+  }
+}   ] }
+```
+</pre><a href="#section-10.2-1" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 </section>
