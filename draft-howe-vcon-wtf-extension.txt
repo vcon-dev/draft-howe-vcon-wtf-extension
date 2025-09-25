@@ -3,7 +3,7 @@
 
 
 vCon                                                    T. McCarthy-Howe
-Internet-Draft                                                   Strolid
+Internet-Draft                                                    VCONIC
 Intended status: Standards Track                       25 September 2025
 Expires: 29 March 2026
 
@@ -982,5 +982,5 @@ Trademark Notice
 Author's Address
 
    Thomas McCarthy-Howe
-   Strolid
+   VCONIC
    Email: ghostofbasho@gmail.com

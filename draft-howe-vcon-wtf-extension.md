@@ -453,7 +453,7 @@ All confidence scores MUST be normalized to the `[0.0, 1.0]` range:
 
 * **1.0**: Highest confidence (perfect recognition)
 * **0.9-1.0**: High confidence
-* **0.7-0.9**: Medium confidence  
+* **0.7-0.9**: Medium confidence
 * **0.5-0.7**: Low confidence
 * **0.0-0.5**: Very low confidence
 
