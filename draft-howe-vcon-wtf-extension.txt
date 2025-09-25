@@ -243,21 +243,33 @@ Table of Contents
 4.1.  Extension Classification
 
    The WTF extension is a *Compatible Extension* as defined in
-   Section 2.5 of [I-D.draft-ietf-vcon-core-00].  This extension: -
-   Introduces transcription data without altering existing vCon
-   semantics - Can be safely ignored by implementations that don't
-   support transcription processing - Does not require listing in the
-   must_support parameter - Maintains backward compatibility with
-   existing vCon implementations
+   Section 2.5 of [I-D.draft-ietf-vcon-core-00].  This extension:
+
+   *  Introduces transcription data without altering existing vCon
+      semantics
+
+   *  Can be safely ignored by implementations that don't support
+      transcription processing
+
+   *  Does not require listing in the must_support parameter
+
+   *  Maintains backward compatibility with existing vCon
+      implementations
 
 4.2.  Extension Registration
 
    This document defines the "wtf_transcription" extension token for
-   registration in the vCon Extensions Names Registry: - *Extension
-   Name*: wtf_transcription - *Extension Description*: World
-   Transcription Format for standardized speech-to-text representation
-   with multi-provider support - *Change Controller*: IESG -
-   *Specification Document*: This document
+   registration in the vCon Extensions Names Registry:
+
+   *  *Extension Name*: wtf_transcription
+
+   *  *Extension Description*: World Transcription Format for
+      standardized speech-to-text representation with multi-provider
+      support
+
+   *  *Change Controller*: IESG
+
+   *  *Specification Document*: This document
 
 4.3.  Extension Usage
 
@@ -278,14 +290,24 @@ Table of Contents
    the standard attachment object structure defined in Section 4.4 of
    [I-D.draft-ietf-vcon-core-00].
 
-   The WTF transcription attachment MUST include: - *type*: MUST be set
-   to "wtf_transcription" - *encoding*: MUST be set to "json" for
-   structured transcription data - *body*: MUST contain the WTF
-   transcription data structure as defined below The WTF transcription
-   attachment SHOULD include: - *start*: ISO 8601 timestamp when
-   transcription was created - *party*: Index of the party in the vCon
-   parties array (for single-speaker transcription) - *dialog*: Index of
-   the associated dialog in the vCon dialog array
+   The WTF transcription attachment MUST include:
+
+   *  *type*: MUST be set to "wtf_transcription"
+
+   *  *encoding*: MUST be set to "json" for structured transcription
+      data
+
+   *  *body*: MUST contain the WTF transcription data structure as
+      defined below
+
+   The WTF transcription attachment SHOULD include:
+
+   *  *start*: ISO 8601 timestamp when transcription was created
+
+   *  *party*: Index of the party in the vCon parties array (for single-
+      speaker transcription)
+
+   *  *dialog*: Index of the associated dialog in the vCon dialog array
 
 5.2.  WTF Body Structure
 
@@ -398,15 +420,27 @@ Table of Contents
 6.1.  Supported Providers
 
    The WTF extension supports integration with major transcription
-   providers: - *Whisper*: OpenAI's open-source speech recognition
-   system - *Deepgram*: Real-time speech-to-text API - *AssemblyAI*: AI-
-   powered transcription and audio intelligence - *Google Cloud Speech-
-   to-Text*: Google's speech recognition service - *Amazon Transcribe*:
-   AWS speech-to-text service - *Azure Speech Services*: Microsoft's
-   speech recognition platform - *Rev.ai*: Automated and human
-   transcription services - *Speechmatics*: Real-time and batch speech
-   recognition - *Wav2Vec2*: Facebook's self-supervised speech
-   recognition model - *Parakeet*: NVIDIA's speech recognition toolkit
+   providers:
+
+   *  *Whisper*: OpenAI's open-source speech recognition system
+
+   *  *Deepgram*: Real-time speech-to-text API
+
+   *  *AssemblyAI*: AI-powered transcription and audio intelligence
+
+   *  *Google Cloud Speech-to-Text*: Google's speech recognition service
+
+   *  *Amazon Transcribe*: AWS speech-to-text service
+
+   *  *Azure Speech Services*: Microsoft's speech recognition platform
+
+   *  *Rev.ai*: Automated and human transcription services
+
+   *  *Speechmatics*: Real-time and batch speech recognition
+
+   *  *Wav2Vec2*: Facebook's self-supervised speech recognition model
+
+   *  *Parakeet*: NVIDIA's speech recognition toolkit
 
 6.2.  Conversion Requirements
 
@@ -434,43 +468,76 @@ Table of Contents
 
 7.1.  Confidence Score Normalization
 
-   All confidence scores MUST be normalized to the [0.0, 1.0] range: -
-   *1.0*: Highest confidence (perfect recognition) - *0.9-1.0*: High
-   confidence - *0.7-0.9*: Medium confidence
-   - *0.5-0.7*: Low confidence - *0.0-0.5*: Very low confidence
-   Provider-specific scales are converted during import: - Percentage
-   (0-100) → divide by 100 - Log probability → exponential
-   transformation - Custom scales → linear normalization
+   All confidence scores MUST be normalized to the [0.0, 1.0] range:
+
+   *  *1.0*: Highest confidence (perfect recognition)
+
+   *  *0.9-1.0*: High confidence
+
+   *  *0.7-0.9*: Medium confidence
+
+   *  *0.5-0.7*: Low confidence
+
+   *  *0.0-0.5*: Very low confidence
+
+   Provider-specific scales are converted during import:
+
+   *  Percentage (0-100) → divide by 100
+
+   *  Log probability → exponential transformation
+
+   *  Custom scales → linear normalization
 
 7.2.  Quality Metrics
 
-   The quality object provides assessment metrics: - *audio_quality*:
-   Categorical assessment (high/medium/low) - *background_noise*: Noise
-   level [0.0-1.0] - *multiple_speakers*: Boolean indicator of multi-
-   speaker content - *overlapping_speech*: Boolean indicator of speaker
-   overlap - *silence_ratio*: Percentage of audio that is silence -
-   *average_confidence*: Mean confidence across all words/segments -
-   *low_confidence_words*: Count of words below 0.5 confidence -
-   *processing_warnings*: Array of processing issues or notices
+   The quality object provides assessment metrics:
+
+   *  *audio_quality*: Categorical assessment (high/medium/low)
+
+   *  *background_noise*: Noise level [0.0-1.0]
+
+   *  *multiple_speakers*: Boolean indicator of multi-speaker content
+
+   *  *overlapping_speech*: Boolean indicator of speaker overlap
+
+   *  *silence_ratio*: Percentage of audio that is silence
+
+   *  *average_confidence*: Mean confidence across all words/segments
+
+   *  *low_confidence_words*: Count of words below 0.5 confidence
+
+   *  *processing_warnings*: Array of processing issues or notices
 
 8.  Security Considerations
 
 8.1.  Data Privacy
 
    Transcription data often contains sensitive personal information.
-   Implementations SHOULD: - Apply appropriate access controls to WTF
-   transcription attachments - Consider encryption requirements for
-   transcription data at rest and in transit - Implement data retention
-   policies consistent with privacy regulations - Provide mechanisms for
-   transcription data redaction or anonymization
+   Implementations SHOULD:
+
+   *  Apply appropriate access controls to WTF transcription attachments
+
+   *  Consider encryption requirements for transcription data at rest
+      and in transit
+
+   *  Implement data retention policies consistent with privacy
+      regulations
+
+   *  Provide mechanisms for transcription data redaction or
+      anonymization
 
 8.2.  Provider-Specific Security
 
-   When integrating with external transcription providers: - Validate
-   provider credentials and API security - Implement secure
-   communication channels (TLS 1.2 or higher) - Consider data residency
-   requirements for audio processing - Audit provider data handling
-   practices and compliance certifications
+   When integrating with external transcription providers:
+
+   *  Validate provider credentials and API security
+
+   *  Implement secure communication channels (TLS 1.2 or higher)
+
+   *  Consider data residency requirements for audio processing
+
+   *  Audit provider data handling practices and compliance
+      certifications
 
 8.3.  Integrity Protection
 
@@ -490,34 +557,52 @@ Table of Contents
 
    This document requests IANA to register the following extension in
    the vCon Extensions Names Registry established by
-   [I-D.draft-ietf-vcon-core-00]: - *Extension Name*: wtf_transcription
-   - *Extension Description*: World Transcription Format for
-   standardized speech-to-text representation with multi-provider
-   support - *Change Controller*: IESG - *Specification Document*: This
-   document
+   [I-D.draft-ietf-vcon-core-00]:
+
+   *  *Extension Name*: wtf_transcription
+
+   *  *Extension Description*: World Transcription Format for
+      standardized speech-to-text representation with multi-provider
+      support
+
+   *  *Change Controller*: IESG
+
+   *  *Specification Document*: This document
 
 9.2.  WTF Attachment Type Values Registry
 
    This document requests IANA to establish a new registry for WTF
-   attachment type values with the following initial registration: -
-   *Type Value*: wtf_transcription - *Description*: Structured
-   transcription records using World Transcription Format - *Change
-   Controller*: IESG - *Specification Document*: This document
-   Registration Template: *Type Value*: The string value used as the
-   attachment type identifier *Description*: Brief description of the
-   attachment type and its purpose *Change Controller*: For Standards
-   Track RFCs, list "IESG".  For others, give the name of the
-   responsible party. *Specification Document(s)*: Reference to defining
-   documents with URIs where available
+   attachment type values with the following initial registration:
+
+   *  *Type Value*: wtf_transcription
+
+   *  *Description*: Structured transcription records using World
+      Transcription Format
+
+   *  *Change Controller*: IESG
+
+   *  *Specification Document*: This document Registration Template:
+      *Type Value*: The string value used as the attachment type
+      identifier *Description*: Brief description of the attachment type
+      and its purpose *Change Controller*: For Standards Track RFCs,
+      list "IESG".  For others, give the name of the responsible party.
+      *Specification Document(s)*: Reference to defining documents with
+      URIs where available
 
 9.3.  WTF Provider Registry
 
    This document requests IANA to establish a new registry for WTF
    transcription providers with initial registrations for supported
-   providers: - *Provider Name*: whisper - *Description*: OpenAI Whisper
-   speech recognition system - *Change Controller*: IESG -
-   *Specification Document*: This document (Additional provider
-   registrations would be added for each supported provider)
+   providers:
+
+   *  *Provider Name*: whisper
+
+   *  *Description*: OpenAI Whisper speech recognition system
+
+   *  *Change Controller*: IESG
+
+   *  *Specification Document*: This document (Additional provider
+      registrations would be added for each supported provider)
 
 10.  Examples
 
