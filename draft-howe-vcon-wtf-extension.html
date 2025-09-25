@@ -12,7 +12,7 @@
     " name="description">
 <meta content="xml2rfc 3.30.2" name="generator">
 <meta content="Internet-Draft" name="keyword">
-<meta content="draft-howe-vcon-wtf-extension-latest" name="ietf.draft">
+<meta content="draft-howe-vcon-wtf-extension-00" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.30.2
     Python 3.13.7
@@ -1059,7 +1059,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dt class="label-workgroup">Workgroup:</dt>
 <dd class="workgroup">vCon</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
-<dd class="internet-draft">draft-howe-vcon-wtf-extension-latest</dd>
+<dd class="internet-draft">draft-howe-vcon-wtf-extension-00</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
 <time datetime="2025-09-25" class="published">25 September 2025</time>
@@ -1089,7 +1089,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
       </h2>
 <p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
 <p id="section-note.1-2">
-        The latest revision of this draft can be found at <span><a href="https://vcon-dev.github.io/draft-howe-vcon-wtf-extension/draft-howe-vcon-wtf-extension-latest.html">https://vcon-dev.github.io/draft-howe-vcon-wtf-extension/draft-howe-vcon-wtf-extension-latest.html</a></span>.
+        The latest revision of this draft can be found at <span><a href="https://vcon-dev.github.io/draft-howe-vcon-wtf-extension/draft-howe-vcon-wtf-extension-00.html">https://vcon-dev.github.io/draft-howe-vcon-wtf-extension/draft-howe-vcon-wtf-extension-00.html</a></span>.
         Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-howe-vcon-wtf-extension/">https://datatracker.ietf.org/doc/draft-howe-vcon-wtf-extension/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
 <p id="section-note.1-3">
         Discussion of this document takes place on the
@@ -1373,7 +1373,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-core-terms" class="section-name selfRef">Core Terms</a>
         </h3>
 <p id="section-2.1-1"><strong>World Transcription Format (WTF)</strong>: A standardized JSON schema for representing speech-to-text transcription data from any provider in a consistent, interoperable format.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
-<p id="section-2.1-2"><strong>Transcription Provider</strong>: A service or system that converts audio or video content to text, such as Whisper™, Deepgram™, AssemblyAI™, Google Cloud Speech-to-Text™, Amazon Transcribe™, or Azure Speech Services™.<a href="#section-2.1-2" class="pilcrow">¶</a></p>
+<p id="section-2.1-2"><strong>Transcription Provider</strong>: A service or system that converts audio or video content to text, such as Whisper(TM), Deepgram(TM), AssemblyAI(TM), Google Cloud Speech-to-Text(TM), Amazon Transcribe(TM), or Azure Speech Services(TM).<a href="#section-2.1-2" class="pilcrow">¶</a></p>
 <p id="section-2.1-3"><strong>WTF Attachment</strong>: A vCon attachment with type "wtf_transcription" that contains structured transcription information in World Transcription Format.<a href="#section-2.1-3" class="pilcrow">¶</a></p>
 <p id="section-2.1-4"><strong>Segment</strong>: A logical chunk of transcribed content, typically representing sentence or phrase boundaries with associated timing information.<a href="#section-2.1-4" class="pilcrow">¶</a></p>
 <p id="section-2.1-5"><strong>Speaker Diarization</strong>: The process of partitioning an audio stream into homogeneous segments according to the speaker identity, enabling "who spoke when" analysis.<a href="#section-2.1-5" class="pilcrow">¶</a></p>
@@ -1580,7 +1580,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
                 <p id="section-5.2.1.1-3.2.1"><strong>language</strong>: MUST use BCP-47 format <span>[<a href="#BCP47" class="cite xref">BCP47</a>]</span> (examples: "en-US", "es-MX", "fr-CA")<a href="#section-5.2.1.1-3.2.1" class="pilcrow">¶</a></p>
 </li>
               <li class="normal" id="section-5.2.1.1-3.3">
-                <p id="section-5.2.1.1-3.3.1"><strong>duration</strong>: Floating-point seconds, MUST be ≥ 0<a href="#section-5.2.1.1-3.3.1" class="pilcrow">¶</a></p>
+                <p id="section-5.2.1.1-3.3.1"><strong>duration</strong>: Floating-point seconds, MUST be &gt;= 0<a href="#section-5.2.1.1-3.3.1" class="pilcrow">¶</a></p>
 </li>
               <li class="normal" id="section-5.2.1.1-3.4">
                 <p id="section-5.2.1.1-3.4.1"><strong>confidence</strong>: Normalized to <code>[0, 1]</code> range regardless of provider scale<a href="#section-5.2.1.1-3.4.1" class="pilcrow">¶</a></p>
@@ -1774,34 +1774,34 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <p id="section-6.1-1">The WTF extension supports integration with major transcription providers:<a href="#section-6.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-6.1-2.1">
-            <p id="section-6.1-2.1.1"><strong>Whisper™</strong>: OpenAI's open-source speech recognition system<a href="#section-6.1-2.1.1" class="pilcrow">¶</a></p>
+            <p id="section-6.1-2.1.1"><strong>Whisper(TM)</strong>: OpenAI's open-source speech recognition system<a href="#section-6.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.1-2.2">
-            <p id="section-6.1-2.2.1"><strong>Deepgram™</strong>: Real-time speech-to-text API<a href="#section-6.1-2.2.1" class="pilcrow">¶</a></p>
+            <p id="section-6.1-2.2.1"><strong>Deepgram(TM)</strong>: Real-time speech-to-text API<a href="#section-6.1-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.1-2.3">
-            <p id="section-6.1-2.3.1"><strong>AssemblyAI™</strong>: AI-powered transcription and audio intelligence<a href="#section-6.1-2.3.1" class="pilcrow">¶</a></p>
+            <p id="section-6.1-2.3.1"><strong>AssemblyAI(TM)</strong>: AI-powered transcription and audio intelligence<a href="#section-6.1-2.3.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.1-2.4">
-            <p id="section-6.1-2.4.1"><strong>Google Cloud Speech-to-Text™</strong>: Google's speech recognition service<a href="#section-6.1-2.4.1" class="pilcrow">¶</a></p>
+            <p id="section-6.1-2.4.1"><strong>Google Cloud Speech-to-Text(TM)</strong>: Google's speech recognition service<a href="#section-6.1-2.4.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.1-2.5">
-            <p id="section-6.1-2.5.1"><strong>Amazon Transcribe™</strong>: AWS speech-to-text service<a href="#section-6.1-2.5.1" class="pilcrow">¶</a></p>
+            <p id="section-6.1-2.5.1"><strong>Amazon Transcribe(TM)</strong>: AWS speech-to-text service<a href="#section-6.1-2.5.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.1-2.6">
-            <p id="section-6.1-2.6.1"><strong>Azure Speech Services™</strong>: Microsoft's speech recognition platform<a href="#section-6.1-2.6.1" class="pilcrow">¶</a></p>
+            <p id="section-6.1-2.6.1"><strong>Azure Speech Services(TM)</strong>: Microsoft's speech recognition platform<a href="#section-6.1-2.6.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.1-2.7">
-            <p id="section-6.1-2.7.1"><strong>Rev.ai™</strong>: Automated and human transcription services<a href="#section-6.1-2.7.1" class="pilcrow">¶</a></p>
+            <p id="section-6.1-2.7.1"><strong>Rev.ai(TM)</strong>: Automated and human transcription services<a href="#section-6.1-2.7.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.1-2.8">
-            <p id="section-6.1-2.8.1"><strong>Speechmatics™</strong>: Real-time and batch speech recognition<a href="#section-6.1-2.8.1" class="pilcrow">¶</a></p>
+            <p id="section-6.1-2.8.1"><strong>Speechmatics(TM)</strong>: Real-time and batch speech recognition<a href="#section-6.1-2.8.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.1-2.9">
-            <p id="section-6.1-2.9.1"><strong>Wav2Vec2™</strong>: Facebook's self-supervised speech recognition model<a href="#section-6.1-2.9.1" class="pilcrow">¶</a></p>
+            <p id="section-6.1-2.9.1"><strong>Wav2Vec2(TM)</strong>: Facebook's self-supervised speech recognition model<a href="#section-6.1-2.9.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-6.1-2.10">
-            <p id="section-6.1-2.10.1"><strong>Parakeet™</strong>: NVIDIA's speech recognition toolkit<a href="#section-6.1-2.10.1" class="pilcrow">¶</a></p>
+            <p id="section-6.1-2.10.1"><strong>Parakeet(TM)</strong>: NVIDIA's speech recognition toolkit<a href="#section-6.1-2.10.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1913,13 +1913,13 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <p id="section-7.1-3">Provider-specific scales are converted during import:<a href="#section-7.1-3" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-7.1-4.1">
-            <p id="section-7.1-4.1.1">Percentage (0-100) → divide by 100<a href="#section-7.1-4.1.1" class="pilcrow">¶</a></p>
+            <p id="section-7.1-4.1.1">Percentage (0-100) -&gt; divide by 100<a href="#section-7.1-4.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-7.1-4.2">
-            <p id="section-7.1-4.2.1">Log probability → exponential transformation<a href="#section-7.1-4.2.1" class="pilcrow">¶</a></p>
+            <p id="section-7.1-4.2.1">Log probability -&gt; exponential transformation<a href="#section-7.1-4.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-7.1-4.3">
-            <p id="section-7.1-4.3.1">Custom scales → linear normalization<a href="#section-7.1-4.3.1" class="pilcrow">¶</a></p>
+            <p id="section-7.1-4.3.1">Custom scales -&gt; linear normalization<a href="#section-7.1-4.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -2092,7 +2092,7 @@ Registration Template:
             <p id="section-9.3-2.1.1"><strong>Provider Name</strong>: whisper<a href="#section-9.3-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-9.3-2.2">
-            <p id="section-9.3-2.2.1"><strong>Description</strong>: OpenAI Whisper™ speech recognition system<a href="#section-9.3-2.2.1" class="pilcrow">¶</a></p>
+            <p id="section-9.3-2.2.1"><strong>Description</strong>: OpenAI Whisper(TM) speech recognition system<a href="#section-9.3-2.2.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-9.3-2.3">
             <p id="section-9.3-2.3.1"><strong>Change Controller</strong>: IESG<a href="#section-9.3-2.3.1" class="pilcrow">¶</a></p>
@@ -2437,34 +2437,34 @@ Registration Template:
 <p id="appendix-B-1">All trademarks mentioned in this document are the property of their respective owners. The use of these trademarks does not imply endorsement by the IETF or the authors of this document. The following trademarks are referenced:<a href="#appendix-B-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="appendix-B-2.1">
-          <p id="appendix-B-2.1.1">Whisper™ is a trademark of OpenAI, Inc.<a href="#appendix-B-2.1.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-2.1.1">Whisper(TM) is a trademark of OpenAI, Inc.<a href="#appendix-B-2.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-2.2">
-          <p id="appendix-B-2.2.1">Deepgram™ is a trademark of Deepgram, Inc.<a href="#appendix-B-2.2.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-2.2.1">Deepgram(TM) is a trademark of Deepgram, Inc.<a href="#appendix-B-2.2.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-2.3">
-          <p id="appendix-B-2.3.1">AssemblyAI™ is a trademark of AssemblyAI, Inc.<a href="#appendix-B-2.3.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-2.3.1">AssemblyAI(TM) is a trademark of AssemblyAI, Inc.<a href="#appendix-B-2.3.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-2.4">
-          <p id="appendix-B-2.4.1">Google Cloud Speech-to-Text™ is a trademark of Google LLC.<a href="#appendix-B-2.4.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-2.4.1">Google Cloud Speech-to-Text(TM) is a trademark of Google LLC.<a href="#appendix-B-2.4.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-2.5">
-          <p id="appendix-B-2.5.1">Amazon Transcribe™ is a trademark of Amazon.com, Inc.<a href="#appendix-B-2.5.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-2.5.1">Amazon Transcribe(TM) is a trademark of Amazon.com, Inc.<a href="#appendix-B-2.5.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-2.6">
-          <p id="appendix-B-2.6.1">Azure Speech Services™ is a trademark of Microsoft Corporation.<a href="#appendix-B-2.6.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-2.6.1">Azure Speech Services(TM) is a trademark of Microsoft Corporation.<a href="#appendix-B-2.6.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-2.7">
-          <p id="appendix-B-2.7.1">Rev.ai™ is a trademark of Rev.com, Inc.<a href="#appendix-B-2.7.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-2.7.1">Rev.ai(TM) is a trademark of Rev.com, Inc.<a href="#appendix-B-2.7.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-2.8">
-          <p id="appendix-B-2.8.1">Speechmatics™ is a trademark of Speechmatics Limited.<a href="#appendix-B-2.8.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-2.8.1">Speechmatics(TM) is a trademark of Speechmatics Limited.<a href="#appendix-B-2.8.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-2.9">
-          <p id="appendix-B-2.9.1">Wav2Vec2™ is a trademark of Meta Platforms, Inc.<a href="#appendix-B-2.9.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-2.9.1">Wav2Vec2(TM) is a trademark of Meta Platforms, Inc.<a href="#appendix-B-2.9.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="appendix-B-2.10">
-          <p id="appendix-B-2.10.1">Parakeet™ is a trademark of NVIDIA Corporation.<a href="#appendix-B-2.10.1" class="pilcrow">¶</a></p>
+          <p id="appendix-B-2.10.1">Parakeet(TM) is a trademark of NVIDIA Corporation.<a href="#appendix-B-2.10.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>

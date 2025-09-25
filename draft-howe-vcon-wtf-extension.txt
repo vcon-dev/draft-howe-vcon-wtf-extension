@@ -9,7 +9,7 @@ Expires: 29 March 2026
 
 
                vCon World Transcription Format Extension
-                  draft-howe-vcon-wtf-extension-latest
+                    draft-howe-vcon-wtf-extension-00
 
 Abstract
 
@@ -32,9 +32,8 @@ About This Document
 
    The latest revision of this draft can be found at https://vcon-
    dev.github.io/draft-howe-vcon-wtf-extension/draft-howe-vcon-wtf-
-   extension-latest.html.  Status information for this document may be
-   found at https://datatracker.ietf.org/doc/draft-howe-vcon-wtf-
-   extension/.
+   extension-00.html.  Status information for this document may be found
+   at https://datatracker.ietf.org/doc/draft-howe-vcon-wtf-extension/.
 
    Discussion of this document takes place on the vCon Working Group
    mailing list (mailto:vcon@ietf.org), which is archived at
@@ -183,9 +182,9 @@ Table of Contents
    consistent, interoperable format.
 
    *Transcription Provider*: A service or system that converts audio or
-   video content to text, such as Whisper™, Deepgram™, AssemblyAI™,
-   Google Cloud Speech-to-Text™, Amazon Transcribe™, or Azure Speech
-   Services™.
+   video content to text, such as Whisper(TM), Deepgram(TM),
+   AssemblyAI(TM), Google Cloud Speech-to-Text(TM), Amazon
+   Transcribe(TM), or Azure Speech Services(TM).
 
    *WTF Attachment*: A vCon attachment with type "wtf_transcription"
    that contains structured transcription information in World
@@ -353,7 +352,7 @@ Table of Contents
    *  *language*: MUST use BCP-47 format [BCP47] (examples: "en-US",
       "es-MX", "fr-CA")
 
-   *  *duration*: Floating-point seconds, MUST be ≥ 0
+   *  *duration*: Floating-point seconds, MUST be >= 0
 
    *  *confidence*: Normalized to [0, 1] range regardless of provider
       scale
@@ -470,26 +469,28 @@ Table of Contents
    The WTF extension supports integration with major transcription
    providers:
 
-   *  *Whisper™*: OpenAI's open-source speech recognition system
+   *  *Whisper(TM)*: OpenAI's open-source speech recognition system
 
-   *  *Deepgram™*: Real-time speech-to-text API
+   *  *Deepgram(TM)*: Real-time speech-to-text API
 
-   *  *AssemblyAI™*: AI-powered transcription and audio intelligence
+   *  *AssemblyAI(TM)*: AI-powered transcription and audio intelligence
 
-   *  *Google Cloud Speech-to-Text™*: Google's speech recognition
+   *  *Google Cloud Speech-to-Text(TM)*: Google's speech recognition
       service
 
-   *  *Amazon Transcribe™*: AWS speech-to-text service
+   *  *Amazon Transcribe(TM)*: AWS speech-to-text service
 
-   *  *Azure Speech Services™*: Microsoft's speech recognition platform
+   *  *Azure Speech Services(TM)*: Microsoft's speech recognition
+      platform
 
-   *  *Rev.ai™*: Automated and human transcription services
+   *  *Rev.ai(TM)*: Automated and human transcription services
 
-   *  *Speechmatics™*: Real-time and batch speech recognition
+   *  *Speechmatics(TM)*: Real-time and batch speech recognition
 
-   *  *Wav2Vec2™*: Facebook's self-supervised speech recognition model
+   *  *Wav2Vec2(TM)*: Facebook's self-supervised speech recognition
+      model
 
-   *  *Parakeet™*: NVIDIA's speech recognition toolkit
+   *  *Parakeet(TM)*: NVIDIA's speech recognition toolkit
 
 6.2.  Conversion Requirements
 
@@ -551,11 +552,11 @@ Table of Contents
 
    Provider-specific scales are converted during import:
 
-   *  Percentage (0-100) → divide by 100
+   *  Percentage (0-100) -> divide by 100
 
-   *  Log probability → exponential transformation
+   *  Log probability -> exponential transformation
 
-   *  Custom scales → linear normalization
+   *  Custom scales -> linear normalization
 
 7.2.  Quality Metrics
 
@@ -666,7 +667,7 @@ Table of Contents
 
    *  *Provider Name*: whisper
 
-   *  *Description*: OpenAI Whisper™ speech recognition system
+   *  *Description*: OpenAI Whisper(TM) speech recognition system
 
    *  *Change Controller*: IESG
 
@@ -959,25 +960,25 @@ Trademark Notice
    endorsement by the IETF or the authors of this document.  The
    following trademarks are referenced:
 
-   *  Whisper™ is a trademark of OpenAI, Inc.
+   *  Whisper(TM) is a trademark of OpenAI, Inc.
 
-   *  Deepgram™ is a trademark of Deepgram, Inc.
+   *  Deepgram(TM) is a trademark of Deepgram, Inc.
 
-   *  AssemblyAI™ is a trademark of AssemblyAI, Inc.
+   *  AssemblyAI(TM) is a trademark of AssemblyAI, Inc.
 
-   *  Google Cloud Speech-to-Text™ is a trademark of Google LLC.
+   *  Google Cloud Speech-to-Text(TM) is a trademark of Google LLC.
 
-   *  Amazon Transcribe™ is a trademark of Amazon.com, Inc.
+   *  Amazon Transcribe(TM) is a trademark of Amazon.com, Inc.
 
-   *  Azure Speech Services™ is a trademark of Microsoft Corporation.
+   *  Azure Speech Services(TM) is a trademark of Microsoft Corporation.
 
-   *  Rev.ai™ is a trademark of Rev.com, Inc.
+   *  Rev.ai(TM) is a trademark of Rev.com, Inc.
 
-   *  Speechmatics™ is a trademark of Speechmatics Limited.
+   *  Speechmatics(TM) is a trademark of Speechmatics Limited.
 
-   *  Wav2Vec2™ is a trademark of Meta Platforms, Inc.
+   *  Wav2Vec2(TM) is a trademark of Meta Platforms, Inc.
 
-   *  Parakeet™ is a trademark of NVIDIA Corporation.
+   *  Parakeet(TM) is a trademark of NVIDIA Corporation.
 
 Author's Address
 

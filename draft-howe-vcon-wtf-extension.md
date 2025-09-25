@@ -2,7 +2,7 @@
 title: "vCon World Transcription Format Extension"
 abbrev: "vCon WTF Extension"
 category: std
-docname: draft-howe-vcon-wtf-extension-latest
+docname: draft-howe-vcon-wtf-extension-00
 ipr: trust200902
 area: "Applications and Real-Time"
 workgroup: "vCon"
@@ -13,7 +13,7 @@ venue:
   mail: "vcon@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/vcon/"
   github: "vcon-dev/draft-howe-vcon-wtf-extension"
-  latest: "https://vcon-dev.github.io/draft-howe-vcon-wtf-extension/draft-howe-vcon-wtf-extension-latest.html"
+  latest: "https://vcon-dev.github.io/draft-howe-vcon-wtf-extension/draft-howe-vcon-wtf-extension-00.html"
 
 stand_alone: yes
 smart_quotes: no
@@ -104,6 +104,16 @@ informative:
 
 {::boilerplate bcp14}
 
+This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.
+
+Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."
+
+This Internet-Draft will expire on [DATE].
+
+This document is draft-howe-vcon-wtf-extension-latest.
+
 --- abstract
 
 This document defines the World Transcription Format (WTF) extension for Virtualized Conversations (vCon). The WTF extension provides a standardized method for representing speech-to-text transcription data from multiple providers within vCon containers. This extension enables consistent transcription storage, analysis, and interoperability across different transcription services while preserving provider-specific features through extensible fields.
@@ -145,7 +155,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 **World Transcription Format (WTF)**: A standardized JSON schema for representing speech-to-text transcription data from any provider in a consistent, interoperable format.
 
-**Transcription Provider**: A service or system that converts audio or video content to text, such as Whisper™, Deepgram™, AssemblyAI™, Google Cloud Speech-to-Text™, Amazon Transcribe™, or Azure Speech Services™.
+**Transcription Provider**: A service or system that converts audio or video content to text, such as Whisper(TM), Deepgram(TM), AssemblyAI(TM), Google Cloud Speech-to-Text(TM), Amazon Transcribe(TM), or Azure Speech Services(TM).
 
 **WTF Attachment**: A vCon attachment with type "wtf_transcription" that contains structured transcription information in World Transcription Format.
 
@@ -275,7 +285,7 @@ The transcript object provides the high-level summary of the entire transcriptio
 
 * **text**: The complete, concatenated transcription text
 * **language**: MUST use BCP-47 format [BCP47] (examples: "en-US", "es-MX", "fr-CA")
-* **duration**: Floating-point seconds, MUST be ≥ 0
+* **duration**: Floating-point seconds, MUST be >= 0
 * **confidence**: Normalized to `[0, 1]` range regardless of provider scale
 
 #### Segments Array
@@ -392,16 +402,16 @@ The metadata object captures processing and source information:
 
 The WTF extension supports integration with major transcription providers:
 
-* **Whisper™**: OpenAI's open-source speech recognition system
-* **Deepgram™**: Real-time speech-to-text API
-* **AssemblyAI™**: AI-powered transcription and audio intelligence
-* **Google Cloud Speech-to-Text™**: Google's speech recognition service
-* **Amazon Transcribe™**: AWS speech-to-text service
-* **Azure Speech Services™**: Microsoft's speech recognition platform
-* **Rev.ai™**: Automated and human transcription services
-* **Speechmatics™**: Real-time and batch speech recognition
-* **Wav2Vec2™**: Facebook's self-supervised speech recognition model
-* **Parakeet™**: NVIDIA's speech recognition toolkit
+* **Whisper(TM)**: OpenAI's open-source speech recognition system
+* **Deepgram(TM)**: Real-time speech-to-text API
+* **AssemblyAI(TM)**: AI-powered transcription and audio intelligence
+* **Google Cloud Speech-to-Text(TM)**: Google's speech recognition service
+* **Amazon Transcribe(TM)**: AWS speech-to-text service
+* **Azure Speech Services(TM)**: Microsoft's speech recognition platform
+* **Rev.ai(TM)**: Automated and human transcription services
+* **Speechmatics(TM)**: Real-time and batch speech recognition
+* **Wav2Vec2(TM)**: Facebook's self-supervised speech recognition model
+* **Parakeet(TM)**: NVIDIA's speech recognition toolkit
 
 ## Conversion Requirements
 
@@ -459,9 +469,9 @@ All confidence scores MUST be normalized to the `[0.0, 1.0]` range:
 
 Provider-specific scales are converted during import:
 
-* Percentage (0-100) → divide by 100
-* Log probability → exponential transformation
-* Custom scales → linear normalization
+* Percentage (0-100) -> divide by 100
+* Log probability -> exponential transformation
+* Custom scales -> linear normalization
 
 ## Quality Metrics
 
@@ -534,7 +544,7 @@ Registration Template:
 This document requests IANA to establish a new registry for WTF transcription providers with initial registrations for supported providers:
 
 * **Provider Name**: whisper
-* **Description**: OpenAI Whisper™ speech recognition system
+* **Description**: OpenAI Whisper(TM) speech recognition system
 * **Change Controller**: IESG
 * **Specification Document**: This document
 (Additional provider registrations would be added for each supported provider)
@@ -786,13 +796,13 @@ This document requests IANA to establish a new registry for WTF transcription pr
 
 All trademarks mentioned in this document are the property of their respective owners. The use of these trademarks does not imply endorsement by the IETF or the authors of this document. The following trademarks are referenced:
 
-* Whisper™ is a trademark of OpenAI, Inc.
-* Deepgram™ is a trademark of Deepgram, Inc.
-* AssemblyAI™ is a trademark of AssemblyAI, Inc.
-* Google Cloud Speech-to-Text™ is a trademark of Google LLC.
-* Amazon Transcribe™ is a trademark of Amazon.com, Inc.
-* Azure Speech Services™ is a trademark of Microsoft Corporation.
-* Rev.ai™ is a trademark of Rev.com, Inc.
-* Speechmatics™ is a trademark of Speechmatics Limited.
-* Wav2Vec2™ is a trademark of Meta Platforms, Inc.
-* Parakeet™ is a trademark of NVIDIA Corporation.
+* Whisper(TM) is a trademark of OpenAI, Inc.
+* Deepgram(TM) is a trademark of Deepgram, Inc.
+* AssemblyAI(TM) is a trademark of AssemblyAI, Inc.
+* Google Cloud Speech-to-Text(TM) is a trademark of Google LLC.
+* Amazon Transcribe(TM) is a trademark of Amazon.com, Inc.
+* Azure Speech Services(TM) is a trademark of Microsoft Corporation.
+* Rev.ai(TM) is a trademark of Rev.com, Inc.
+* Speechmatics(TM) is a trademark of Speechmatics Limited.
+* Wav2Vec2(TM) is a trademark of Meta Platforms, Inc.
+* Parakeet(TM) is a trademark of NVIDIA Corporation.
