@@ -397,6 +397,7 @@ The WTF extension supports integration with major transcription providers:
 ## Conversion Requirements
 
 When converting from provider-specific formats to WTF:
+
 1. **Normalize confidence scores** to [0.0, 1.0] range
 2. **Convert timestamps** to floating-point seconds
 3. **Standardize language codes** to BCP-47 format

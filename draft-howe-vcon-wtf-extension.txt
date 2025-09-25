@@ -444,11 +444,17 @@ Table of Contents
 
 6.2.  Conversion Requirements
 
-   When converting from provider-specific formats to WTF: 1. *Normalize
-   confidence scores* to [0.0, 1.0] range 2. *Convert timestamps* to
-   floating-point seconds 3. *Standardize language codes* to BCP-47
-   format 4. *Preserve provider-specific features* in extensions field
-   5. *Validate output* against WTF schema requirements
+   When converting from provider-specific formats to WTF:
+
+   1.  *Normalize confidence scores* to [0.0, 1.0] range
+
+   2.  *Convert timestamps* to floating-point seconds
+
+   3.  *Standardize language codes* to BCP-47 format
+
+   4.  *Preserve provider-specific features* in extensions field
+
+   5.  *Validate output* against WTF schema requirements
 
 6.3.  Provider-Specific Mappings
 
