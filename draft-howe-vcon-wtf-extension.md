@@ -174,20 +174,21 @@ The World Transcription Format uses a hierarchical JSON structure designed to ca
 ## Core Structure
 
 WTF uses a hierarchical JSON structure with three required sections and multiple optional enrichment layers:
-    ```json
+
+<artwork type="json">
 {
   "transcript": { /* Required: Core transcript information */ },
   "segments": [ /* Required: Time-aligned text segments */ ],
   "metadata": { /* Required: Processing metadata */ },
   "words": [ /* Optional: Word-level details */ ],
   "speakers": { /* Optional: Speaker diarization */ },
-  "alternatives": [ /* Optional: Alternative transcriptions */ ],
+  "alternatives": [ /* Optional: Alternative transcriptions */ },
   "enrichments": { /* Optional: Analysis features */ },
   "extensions": { /* Optional: Provider-specific data */ },
   "quality": { /* Optional: Quality metrics */ },
   "streaming": { /* Optional: Streaming information */ }
 }
-    ```
+</artwork>
 
 # vCon WTF Extension Definition
 
@@ -212,7 +213,8 @@ This document defines the "wtf_transcription" extension token for registration i
 ## Extension Usage
 
 vCon instances that include WTF transcription attachments SHOULD include "wtf_transcription" in the `extensions` array:
-    ```json
+
+<artwork type="json">
 {
   "uuid": "01234567-89ab-cdef-0123-456789abcdef",
   "extensions": ["wtf_transcription"],
@@ -232,7 +234,7 @@ vCon instances that include WTF transcription attachments SHOULD include "wtf_tr
     }
   ]
 }
-    ```
+</artwork>
 
 # WTF Attachment Structure
 
@@ -259,14 +261,15 @@ The `body` field of the WTF transcription attachment MUST contain a JSON object 
 ### Required Fields
 
 #### Transcript Object
-    ```json
+
+<artwork type="json">
 "transcript": {
   "text": "string",       // Complete transcription text
   "language": "string",   // BCP-47 language code (e.g., "en-US")
   "duration": "number",   // Total audio duration in seconds
   "confidence": "number"  // Overall confidence score [0.0-1.0]
 }
-    ```
+</artwork>
 
 The transcript object provides the high-level summary of the entire transcription:
 
@@ -276,7 +279,8 @@ The transcript object provides the high-level summary of the entire transcriptio
 * **confidence**: Normalized to [0, 1] range regardless of provider scale
 
 #### Segments Array
-    ```json
+
+<artwork type="json">
 "segments": [
   {
     "id": "integer",              // Sequential segment identifier
@@ -288,7 +292,7 @@ The transcript object provides the high-level summary of the entire transcriptio
     "words": ["integer"]          // Optional: Array of word indices
   }
 ]
-    ```
+</artwork>
 
 Segments represent logical chunks of transcribed content, typically sentence or phrase boundaries:
 
@@ -299,7 +303,8 @@ Segments represent logical chunks of transcribed content, typically sentence or 
 * **words**: References indices in the words array
 
 #### Metadata Object
-    ```json
+
+<artwork type="json">
 "metadata": {
   "created_at": "string",        // ISO 8601 timestamp
   "processed_at": "string",      // ISO 8601 timestamp
@@ -315,7 +320,7 @@ Segments represent logical chunks of transcribed content, typically sentence or 
   },
   "options": "object"            // Provider-specific options used
 }
-    ```
+</artwork>
 
 The metadata object captures processing and source information:
 
@@ -327,7 +332,8 @@ The metadata object captures processing and source information:
 ### Optional Fields
 
 #### Words Array
-    ```json
+
+<artwork type="json">
 "words": [
   {
     "id": "integer",              // Sequential word identifier
@@ -339,10 +345,11 @@ The metadata object captures processing and source information:
     "is_punctuation": "boolean"   // Optional: Punctuation marker
   }
 ]
-    ```
+</artwork>
 
 #### Speakers Object
-    ```json
+
+<artwork type="json">
 "speakers": {
   "speaker_id": {
     "id": "integer|string",       // Speaker identifier
@@ -352,10 +359,11 @@ The metadata object captures processing and source information:
     "confidence": "number"        // Diarization confidence [0.0-1.0]
   }
 }
-    ```
+</artwork>
 
 #### Quality Object
-    ```json
+
+<artwork type="json">
 "quality": {
   "audio_quality": "string",      // high, medium, low
   "background_noise": "number",   // Noise level [0.0-1.0]
@@ -366,16 +374,17 @@ The metadata object captures processing and source information:
   "low_confidence_words": "integer",
   "processing_warnings": ["string"]
 }
-    ```
+</artwork>
 
 #### Extensions Object
-    ```json
+
+<artwork type="json">
 "extensions": {
   "provider_name": {
     // Provider-specific fields preserved during conversion
   }
 }
-    ```
+</artwork>
 
 # Provider Integration Guidelines
 
@@ -407,7 +416,8 @@ When converting from provider-specific formats to WTF:
 ## Provider-Specific Mappings
 
 ### Whisper Integration
-    ```json
+
+<artwork type="json">
 {
   "extensions": {
     "whisper": {
@@ -419,10 +429,11 @@ When converting from provider-specific formats to WTF:
     }
   }
 }
-    ```
+</artwork>
 
 ### Deepgram Integration
-    ```json
+
+<artwork type="json">
 {
   "extensions": {
     "deepgram": {
@@ -432,7 +443,7 @@ When converting from provider-specific formats to WTF:
     }
   }
 }
-    ```
+</artwork>
 
 # Quality and Confidence Metrics
 
@@ -531,7 +542,8 @@ This document requests IANA to establish a new registry for WTF transcription pr
 # Examples
 
 ## Basic Two-Party Call Transcription
-    ```json
+
+<artwork type="json">
 {
   "uuid": "01928e10-193e-8231-b9a2-279e0d16bc46",
   "vcon": "0.0.2",
@@ -673,10 +685,11 @@ This document requests IANA to establish a new registry for WTF transcription pr
     }
   ]
 }
-    ```
+</artwork>
 
 ## Multi-Provider Transcription Comparison
-    ```json
+
+<artwork type="json">
 {
   "attachments": [
     {
@@ -758,7 +771,8 @@ This document requests IANA to establish a new registry for WTF transcription pr
     }
   ]
 }
-    ```
+</artwork>
+
 --- back
 
 # Acknowledgements
