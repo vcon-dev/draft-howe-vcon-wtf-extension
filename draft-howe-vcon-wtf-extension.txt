@@ -4,8 +4,8 @@
 
 vCon                                                    T. McCarthy-Howe
 Internet-Draft                                                    VCONIC
-Intended status: Standards Track                       25 September 2025
-Expires: 29 March 2026
+Intended status: Standards Track                          6 October 2025
+Expires: 9 April 2026
 
 
                vCon World Transcription Format Extension
@@ -25,8 +25,7 @@ Abstract
    The WTF extension is designed as a Compatible Extension that
    introduces a new analysis type for transcription data without
    altering existing vCon semantics, ensuring backward compatibility
-   with existing vCon implementations.  The analysis results are stored
-   as vCon attachments using the standardized WTF schema.
+   with existing vCon implementations.
 
 About This Document
 
@@ -61,7 +60,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 March 2026.
+   This Internet-Draft will expire on 9 April 2026.
 
 Copyright Notice
 
@@ -181,10 +180,7 @@ Table of Contents
    specifically for speech-to-text transcription.  This analysis type
    enables organizations to standardize their transcription analysis
    workflows while maintaining the flexibility to use multiple providers
-   and preserve provider-specific analytical enhancements.  The analysis
-   results are stored as vCon attachments using the standardized WTF
-   schema, allowing the analysis data to be properly associated with the
-   corresponding dialog elements.
+   and preserve provider-specific analytical enhancements.
 
 3.  Conventions and Definitions
 
@@ -206,11 +202,6 @@ Table of Contents
    video content to text, such as Whisper(TM), Deepgram(TM),
    AssemblyAI(TM), Google Cloud Speech-to-Text(TM), Amazon
    Transcribe(TM), or Azure Speech Services(TM).
-
-   *WTF Analysis Attachment*: A vCon attachment with type
-   "wtf_transcription" that contains structured transcription analysis
-   results in World Transcription Format.  The attachment serves as the
-   storage mechanism for the analysis data within the vCon container.
 
    *Segment*: A logical chunk of transcribed content, typically
    representing sentence or phrase boundaries with associated timing
@@ -316,7 +307,7 @@ Table of Contents
      "created_at": "2025-01-02T12:00:00Z",
      "parties": [...],
      "dialog": [...],
-     "attachments": [
+     "analysis": [
        {
          "type": "wtf_transcription",
          "start": "2025-01-02T12:15:30Z",
@@ -334,13 +325,13 @@ Table of Contents
 
 6.1.  Analysis Storage
 
-   Transcription analysis results MUST be stored as vCon attachments
-   using the standard attachment object structure defined in Section 4.4
-   of [I-D.draft-ietf-vcon-core-00].  The attachment mechanism provides
-   the association between the analysis results and the corresponding
-   dialog elements.
+   Transcription analysis results MUST be stored as vCon analysis using
+   the standard analysis object structure defined in Section 4.3 of
+   [I-D.draft-ietf-vcon-core-00].  The analysis mechanism provides the
+   association between the analysis results and the corresponding dialog
+   elements.
 
-   The WTF transcription analysis attachment MUST include:
+   The WTF transcription analysis object MUST include:
 
    *  *type*: MUST be set to "wtf_transcription" to identify this as a
       WTF analysis
@@ -350,7 +341,7 @@ Table of Contents
    *  *body*: MUST contain the WTF transcription analysis data structure
       as defined below
 
-   The WTF transcription analysis attachment SHOULD include:
+   The WTF transcription analysis SHOULD include:
 
    *  *start*: ISO 8601 timestamp when the transcription analysis was
       performed
@@ -362,8 +353,8 @@ Table of Contents
 
 6.2.  WTF Analysis Schema
 
-   The body field of the WTF transcription analysis attachment MUST
-   contain a JSON object conforming to the WTF analysis schema with the
+   The body field of the WTF transcription analysis object MUST contain
+   a JSON object conforming to the WTF analysis schema with the
    following structure:
 
 6.2.1.  Required Fields
@@ -618,7 +609,7 @@ Table of Contents
    Transcription data often contains sensitive personal information.
    Implementations SHOULD:
 
-   *  Apply appropriate access controls to WTF transcription attachments
+   *  Apply appropriate access controls to WTF analysis objects
 
    *  Consider encryption requirements for transcription data at rest
       and in transit
@@ -644,9 +635,10 @@ Table of Contents
 
 9.3.  Integrity Protection
 
-   WTF transcription attachments SHOULD be integrity protected using
-   vCon signing mechanisms as defined in [I-D.draft-ietf-vcon-core-00]
-   to prevent unauthorized modification of transcription data.
+   WTF transcription analysis objects SHOULD be integrity protected
+   using vCon signing mechanisms as defined in
+   [I-D.draft-ietf-vcon-core-00] to prevent unauthorized modification of
+   transcription data.
 
 9.4.  Temporal Validation
 
