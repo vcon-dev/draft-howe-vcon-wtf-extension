@@ -9,7 +9,7 @@ Expires: 9 April 2026
 
 
                vCon World Transcription Format Extension
-                    draft-howe-vcon-wtf-extension-01
+                  draft-howe-vcon-wtf-extension-latest
 
 Abstract
 
@@ -33,8 +33,9 @@ About This Document
 
    The latest revision of this draft can be found at https://vcon-
    dev.github.io/draft-howe-vcon-wtf-extension/draft-howe-vcon-wtf-
-   extension-01.html.  Status information for this document may be found
-   at https://datatracker.ietf.org/doc/draft-howe-vcon-wtf-extension/.
+   extension-latest.html.  Status information for this document may be
+   found at https://datatracker.ietf.org/doc/draft-howe-vcon-wtf-
+   extension/.
 
    Discussion of this document takes place on the vCon Working Group
    mailing list (mailto:vcon@ietf.org), which is archived at
