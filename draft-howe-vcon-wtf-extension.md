@@ -25,7 +25,7 @@ author:
     organization: VCONIC
     email: ghostofbasho@gmail.com
 
-date: 2025-10-06
+date: 2026-04-16
 seriesinfo:
   Internet-Draft: draft-howe-vcon-wtf-extension
 
@@ -40,17 +40,17 @@ normative:
       ins: G. Klyne
     date: July 2002
 
-  I-D.draft-ietf-vcon-core-00:
-    target: I-D.draft-ietf-vcon-core-00
-    title: "Virtualized Conversation (vCon) Container"
+  I-D.draft-ietf-vcon-vcon-core:
+    target: https://datatracker.ietf.org/doc/draft-ietf-vcon-vcon-core/
+    title: "The JSON format for vCon - Conversation Data Container"
     author:
       -
-        ins: D. Petrie
-        name: Daniel Petrie
+        ins: D. G Petrie
+        name: Daniel G Petrie
         org: SIPez LLC
-    date: March 2025
+    date: January 2026
     seriesinfo:
-      Internet-Draft: draft-ietf-vcon-core-00
+      Internet-Draft: draft-ietf-vcon-vcon-core-02
 
   RFC8949:
     target: https://www.rfc-editor.org/rfc/rfc8949.html
@@ -62,15 +62,15 @@ normative:
 
 informative:
   I-D.draft-ietf-vcon-overview:
-    target: I-D.draft-ietf-vcon-overview-00
+    target: https://datatracker.ietf.org/doc/draft-ietf-vcon-overview/
     title: "The vCon - Conversation Data Container - Overview"
     author:
       -
         name: Thomas McCarthy-Howe
-        org: Strolid
-    date: July 2025
+        org: VCONIC
+    date: 2025
     seriesinfo:
-      Internet-Draft: draft-ietf-vcon-overview-00
+      Internet-Draft: draft-ietf-vcon-overview
 
   BCP47:
     target: https://www.rfc-editor.org/rfc/rfc5646.html
@@ -114,7 +114,7 @@ Internet-Drafts are working documents of the Internet Engineering Task Force (IE
 
 Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."
 
-This Internet-Draft will expire on [DATE].
+This Internet-Draft will expire on 2026-10-16.
 
 This document is draft-howe-vcon-wtf-extension-latest.
 
@@ -132,7 +132,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 # Introduction
 
-Virtualized Conversations (vCon) [I-D.draft-ietf-vcon-core-00] provide a standardized container format for conversation data, enabling interoperability across different communication platforms and modalities. As speech-to-text technology becomes increasingly important for conversation analysis, compliance, and accessibility, there is a growing need for standardized transcription analysis representation within vCon containers.
+Virtualized Conversations (vCon) [I-D.draft-ietf-vcon-vcon-core] provide a standardized container format for conversation data, enabling interoperability across different communication platforms and modalities. As speech-to-text technology becomes increasingly important for conversation analysis, compliance, and accessibility, there is a growing need for standardized transcription analysis representation within vCon containers.
 
 Current transcription services each use proprietary formats, making it difficult to:
 
@@ -167,7 +167,7 @@ The WTF extension defines a new category of vCon analysis specifically for speec
 
 **Speaker Diarization**: The process of partitioning an audio stream into homogeneous segments according to the speaker identity, enabling "who spoke when" analysis.
 
-**Compatible Extension**: A vCon extension that introduces additional data without altering the meaning or structure of existing elements, as defined in [I-D.draft-ietf-vcon-core-00].
+**Compatible Extension**: A vCon extension that introduces additional data without altering the meaning or structure of existing elements, as defined in [I-D.draft-ietf-vcon-vcon-core].
 
 # World Transcription Format Overview
 
@@ -208,12 +208,12 @@ WTF uses a hierarchical JSON structure with three required sections and multiple
 
 ## Extension Classification
 
-The WTF extension is a **Compatible Extension** as defined in Section 2.5 of [I-D.draft-ietf-vcon-core-00]. This extension:
+The WTF extension is a **Compatible Extension** as defined in Section 2.5 of [I-D.draft-ietf-vcon-vcon-core]. This extension:
 
 * Introduces a new analysis type for transcription data without altering existing vCon semantics
 * Defines a comprehensive analysis framework for speech-to-text results
 * Can be safely ignored by implementations that don't support transcription analysis
-* Does not require listing in the `must_support` parameter
+* Does not require listing in the `critical` parameter
 * Maintains backward compatibility with existing vCon implementations
 
 ## Extension Registration
@@ -255,7 +255,7 @@ vCon instances that include WTF transcription analysis SHOULD include "wtf_trans
 
 ## Analysis Storage
 
-Transcription analysis results MUST be stored as vCon analysis using the standard analysis object structure defined in Section 4.3 of [I-D.draft-ietf-vcon-core-00]. The analysis mechanism provides the association between the analysis results and the corresponding dialog elements.
+Transcription analysis results MUST be stored as vCon analysis using the standard analysis object structure defined in Section 4.5 of [I-D.draft-ietf-vcon-vcon-core]. The analysis mechanism provides the association between the analysis results and the corresponding dialog elements.
 
 The WTF transcription analysis object MUST include:
 
@@ -401,6 +401,60 @@ The metadata object captures processing and source information:
 }
 </artwork>
 
+#### Alternatives Array
+
+The alternatives array captures multiple transcription hypotheses when a provider returns ranked results.
+
+<artwork type="json">
+"alternatives": [
+  {
+    "rank": "integer",       // 1-based rank (1 = highest confidence)
+    "confidence": "number",  // Alternative-level confidence [0.0-1.0]
+    "transcript": {
+      "text": "string",
+      "confidence": "number"
+    },
+    "segments": []           // Optional: segment-level alternatives
+  }
+]
+</artwork>
+
+#### Enrichments Object
+
+The enrichments object contains NLP analysis results layered on top of the base transcription.
+
+<artwork type="json">
+"enrichments": {
+  "sentiment": {
+    "overall": "string",     // positive, negative, neutral
+    "score": "number"        // [-1.0, 1.0]
+  },
+  "entities": [
+    {
+      "text": "string",      // Entity text as it appears
+      "type": "string",      // PERSON, ORG, LOCATION, DATE, etc.
+      "start": "number",     // Start time in seconds
+      "end": "number"        // End time in seconds
+    }
+  ],
+  "topics": ["string"],      // Detected topic labels
+  "summary": "string"        // Optional: abstractive summary
+}
+</artwork>
+
+#### Streaming Object
+
+The streaming object captures metadata specific to real-time transcription sessions.
+
+<artwork type="json">
+"streaming": {
+  "session_id": "string",    // Streaming session identifier
+  "is_final": "boolean",     // Whether this is a final (not interim) result
+  "stability": "number",     // Interim result stability [0.0-1.0]
+  "latency_ms": "integer"    // Processing latency in milliseconds
+}
+</artwork>
+
 # Provider Integration Guidelines
 
 ## Supported Providers
@@ -513,7 +567,7 @@ When integrating with external transcription providers:
 
 ## Integrity Protection
 
-WTF transcription analysis objects SHOULD be integrity protected using vCon signing mechanisms as defined in [I-D.draft-ietf-vcon-core-00] to prevent unauthorized modification of transcription data.
+WTF transcription analysis objects SHOULD be integrity protected using vCon signing mechanisms as defined in [I-D.draft-ietf-vcon-vcon-core] to prevent unauthorized modification of transcription data.
 
 ## Temporal Validation
 
@@ -533,7 +587,7 @@ The World Transcription Format is fundamentally an **analysis framework** that d
 * Provider-specific analytical features
 * Processing metadata and provenance information
 
-**Attachments provide storage**: The vCon analysis mechanism is used as the storage container for WTF analysis results. The analysis type "wtf_transcription" identifies the stored data as conforming to the WTF analysis schema.
+**Analysis provides storage**: The vCon analysis mechanism is used as the storage container for WTF analysis results. The analysis type "wtf_transcription" identifies the stored data as conforming to the WTF analysis schema.
 
 ## Analysis Processing Workflow
 
@@ -542,15 +596,15 @@ The typical workflow for WTF transcription analysis is:
 1. **Audio Processing**: Dialog audio is processed by a transcription provider
 2. **Analysis Generation**: Provider results are converted to WTF analysis schema
 3. **Quality Assessment**: Analysis includes confidence scores and quality metrics
-4. **Storage**: WTF analysis is stored as a vCon attachment with type "wtf_transcription"
-5. **Retrieval**: Consumers read the attachment to access transcription analysis results
+4. **Storage**: WTF analysis is stored as a vCon analysis object with type "wtf_transcription"
+5. **Retrieval**: Consumers read the analysis object to access transcription results
 6. **Utilization**: Analysis data is used for search, compliance, accessibility, or further processing
 
 # IANA Considerations
 
 ## vCon Extensions Names Registry
 
-This document requests IANA to register the following extension in the vCon Extensions Names Registry established by [I-D.draft-ietf-vcon-core-00]:
+This document requests IANA to register the following extension in the vCon Extensions Names Registry established by [I-D.draft-ietf-vcon-vcon-core]:
 
 * **Extension Name**: wtf_transcription
 * **Extension Description**: World Transcription Format - A standardized analysis framework for speech-to-text transcription with multi-provider support, quality metrics, and confidence scoring
@@ -566,11 +620,12 @@ This document requests IANA to establish a new registry for WTF analysis type va
 * **Change Controller**: IESG
 * **Specification Document**: This document
 
-Registration Template:
-**Type Value**: The string value used as the analysis type identifier in vCon attachments
-**Description**: Brief description of the analysis type and its analytical capabilities
-**Change Controller**: For Standards Track RFCs, list "IESG". For others, give the name of the responsible party.
-**Specification Document(s)**: Reference to defining documents with URIs where available
+### Registration Template
+
+* **Type Value**: The string value used as the analysis type identifier in vCon analysis objects
+* **Description**: Brief description of the analysis type and its analytical capabilities
+* **Change Controller**: For Standards Track RFCs, list "IESG". For others, give the name of the responsible party.
+* **Specification Document(s)**: Reference to defining documents with URIs where available
 
 ## WTF Provider Registry
 
@@ -589,7 +644,6 @@ This document requests IANA to establish a new registry for WTF transcription an
 <artwork type="json">
 {
   "uuid": "01928e10-193e-8231-b9a2-279e0d16bc46",
-  "vcon": "0.0.2",
   "extensions": ["wtf_transcription"],
   "created_at": "2025-01-02T12:00:00Z",
   "parties": [
@@ -617,13 +671,12 @@ This document requests IANA to establish a new registry for WTF transcription an
       "type": "wtf_transcription",
       "start": "2025-01-02T12:16:35Z",
       "dialog": 0,
+      "vendor": "deepgram",
+      "product": "nova-2",
       "encoding": "json",
       "body": {
         "transcript": {
-          "text": "Hello, this is Alice from customer service. " +
-                  "How can I help you today? Hi Alice, I'm having " +
-                  "trouble with my account. Can you help me reset " +
-                  "my password?",
+          "text": "Hello, this is Alice from customer service. How can I help you today? Hi Alice, I'm having trouble with my account. Can you help me reset my password?",
           "language": "en-US",
           "duration": 65.2,
           "confidence": 0.92
@@ -633,8 +686,7 @@ This document requests IANA to establish a new registry for WTF transcription an
             "id": 0,
             "start": 0.5,
             "end": 4.8,
-            "text": "Hello, this is Alice from customer service. " +
-                    "How can I help you today?",
+            "text": "Hello, this is Alice from customer service. How can I help you today?",
             "confidence": 0.95,
             "speaker": 0,
             "words": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
@@ -643,12 +695,11 @@ This document requests IANA to establish a new registry for WTF transcription an
             "id": 1,
             "start": 5.2,
             "end": 9.1,
-            "text": "Hi Alice, I'm having trouble with my account. " +
-                    "Can you help me reset my password?",
+            "text": "Hi Alice, I'm having trouble with my account. Can you help me reset my password?",
             "confidence": 0.88,
             "speaker": 1,
-            "words": [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
-                      30, 31]
+            "words": [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
+                      29, 30]
           }
         ],
         "words": [
@@ -725,8 +776,7 @@ This document requests IANA to establish a new registry for WTF transcription an
                 "end": 4.8,
                 "confidence": 0.95,
                 "channel": 0,
-                "transcript": "Hello, this is Alice from customer service. " +
-                              "How can I help you today?"
+                "transcript": "Hello, this is Alice from customer service. How can I help you today?"
               }
             ]
           }
@@ -745,6 +795,8 @@ This document requests IANA to establish a new registry for WTF transcription an
     {
       "type": "wtf_transcription",
       "dialog": 0,
+      "vendor": "openai",
+      "product": "whisper-large-v3",
       "encoding": "json",
       "body": {
         "transcript": {
@@ -783,6 +835,8 @@ This document requests IANA to establish a new registry for WTF transcription an
     {
       "type": "wtf_transcription",
       "dialog": 0,
+      "vendor": "deepgram",
+      "product": "nova-2",
       "encoding": "json",
       "body": {
         "transcript": {
