@@ -139,10 +139,12 @@ Table of Contents
    Virtualized Conversations (vCon) [I-D.draft-ietf-vcon-vcon-core]
    provide a standardized container format for conversation data,
    enabling interoperability across different communication platforms
-   and modalities.  As speech-to-text technology becomes increasingly
-   important for conversation analysis, compliance, and accessibility,
-   there is a growing need for standardized transcription analysis
-   representation within vCon containers.
+   and modalities.  An overview of the vCon ecosystem and its use cases
+   is provided in [I-D.draft-ietf-vcon-overview].  As speech-to-text
+   technology becomes increasingly important for conversation analysis,
+   compliance, and accessibility, there is a growing need for
+   standardized transcription analysis representation within vCon
+   containers.
 
    Current transcription services each use proprietary formats, making
    it difficult to:
@@ -659,7 +661,10 @@ Table of Contents
 9.1.  Data Privacy
 
    Transcription data often contains sensitive personal information.
-   Implementations SHOULD:
+   Developers implementing WTF SHOULD consult
+   [I-D.draft-ietf-vcon-privacy-primer] for comprehensive guidance on
+   privacy considerations when handling vCon data.  Implementations
+   SHOULD:
 
    *  Apply appropriate access controls to WTF analysis objects
 
@@ -1088,6 +1093,13 @@ Table of Contents
               - Overview", Work in Progress, Internet-Draft, draft-ietf-
               vcon-overview, 2025, <https://datatracker.ietf.org/doc/
               draft-ietf-vcon-overview/>.
+
+   [I-D.draft-ietf-vcon-privacy-primer]
+              James, D. and T. McCarthy-Howe, "Privacy Primer for vCon
+              Developers", Work in Progress, Internet-Draft, draft-ietf-
+              vcon-privacy-primer, 2025,
+              <https://datatracker.ietf.org/doc/draft-ietf-vcon-privacy-
+              primer/>.
 
    [WHISPER]  Radford, A., Kim, J. W., Xu, T., Brockman, G., McLeavey,
               C., and I. Sutskever, "Whisper: Robust Speech Recognition
