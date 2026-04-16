@@ -1,0 +1,839 @@
+{
+  "schema_version": "1.0.0",
+  "repo": "draft-howe-vcon-wtf-extension",
+  "repo_version": null,
+  "archetype": "ietf-draft",
+  "generated_at": "2026-04-16T15:15:44.312474+00:00",
+  "stats": {
+    "node_count": 74,
+    "edge_count": 49
+  },
+  "nodes": [
+    {
+      "id": "document:draft",
+      "type": "document",
+      "name": "draft-howe-vcon-wtf-extension",
+      "file": "draft-howe-vcon-wtf-extension.md"
+    },
+    {
+      "id": "section:requirements-language",
+      "type": "section",
+      "name": "Requirements Language",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 129,
+      "level": 1
+    },
+    {
+      "id": "section:introduction",
+      "type": "section",
+      "name": "Introduction",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 133,
+      "level": 1
+    },
+    {
+      "id": "section:conventions-and-definitions",
+      "type": "section",
+      "name": "Conventions and Definitions",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 156,
+      "level": 1
+    },
+    {
+      "id": "section:core-terms",
+      "type": "section",
+      "name": "Core Terms",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 158,
+      "level": 2
+    },
+    {
+      "id": "section:world-transcription-format-overview",
+      "type": "section",
+      "name": "World Transcription Format Overview",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 172,
+      "level": 1
+    },
+    {
+      "id": "section:design-principles",
+      "type": "section",
+      "name": "Design Principles",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 176,
+      "level": 2
+    },
+    {
+      "id": "section:core-structure",
+      "type": "section",
+      "name": "Core Structure",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 188,
+      "level": 2
+    },
+    {
+      "id": "section:vcon-wtf-extension-definition",
+      "type": "section",
+      "name": "vCon WTF Extension Definition",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 207,
+      "level": 1
+    },
+    {
+      "id": "section:extension-classification",
+      "type": "section",
+      "name": "Extension Classification",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 209,
+      "level": 2
+    },
+    {
+      "id": "section:extension-registration",
+      "type": "section",
+      "name": "Extension Registration",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 219,
+      "level": 2
+    },
+    {
+      "id": "section:extension-usage",
+      "type": "section",
+      "name": "Extension Usage",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 228,
+      "level": 2
+    },
+    {
+      "id": "section:wtf-analysis-structure",
+      "type": "section",
+      "name": "WTF Analysis Structure",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 254,
+      "level": 1
+    },
+    {
+      "id": "section:analysis-storage",
+      "type": "section",
+      "name": "Analysis Storage",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 256,
+      "level": 2
+    },
+    {
+      "id": "section:wtf-analysis-schema",
+      "type": "section",
+      "name": "WTF Analysis Schema",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 272,
+      "level": 2
+    },
+    {
+      "id": "section:required-fields",
+      "type": "section",
+      "name": "Required Fields",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 276,
+      "level": 3
+    },
+    {
+      "id": "section:transcript-object",
+      "type": "section",
+      "name": "Transcript Object",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 278,
+      "level": 4
+    },
+    {
+      "id": "section:segments-array",
+      "type": "section",
+      "name": "Segments Array",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 296,
+      "level": 4
+    },
+    {
+      "id": "section:metadata-object",
+      "type": "section",
+      "name": "Metadata Object",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 320,
+      "level": 4
+    },
+    {
+      "id": "section:optional-fields",
+      "type": "section",
+      "name": "Optional Fields",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 347,
+      "level": 3
+    },
+    {
+      "id": "section:words-array",
+      "type": "section",
+      "name": "Words Array",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 349,
+      "level": 4
+    },
+    {
+      "id": "section:speakers-object",
+      "type": "section",
+      "name": "Speakers Object",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 365,
+      "level": 4
+    },
+    {
+      "id": "section:quality-object",
+      "type": "section",
+      "name": "Quality Object",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 379,
+      "level": 4
+    },
+    {
+      "id": "section:extensions-object",
+      "type": "section",
+      "name": "Extensions Object",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 394,
+      "level": 4
+    },
+    {
+      "id": "section:provider-integration-guidelines",
+      "type": "section",
+      "name": "Provider Integration Guidelines",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 404,
+      "level": 1
+    },
+    {
+      "id": "section:supported-providers",
+      "type": "section",
+      "name": "Supported Providers",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 406,
+      "level": 2
+    },
+    {
+      "id": "section:conversion-requirements",
+      "type": "section",
+      "name": "Conversion Requirements",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 421,
+      "level": 2
+    },
+    {
+      "id": "section:provider-specific-mappings",
+      "type": "section",
+      "name": "Provider-Specific Mappings",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 431,
+      "level": 2
+    },
+    {
+      "id": "section:whisper-integration",
+      "type": "section",
+      "name": "Whisper Integration",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 433,
+      "level": 3
+    },
+    {
+      "id": "section:deepgram-integration",
+      "type": "section",
+      "name": "Deepgram Integration",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 449,
+      "level": 3
+    },
+    {
+      "id": "section:quality-and-confidence-metrics",
+      "type": "section",
+      "name": "Quality and Confidence Metrics",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 463,
+      "level": 1
+    },
+    {
+      "id": "section:confidence-score-normalization",
+      "type": "section",
+      "name": "Confidence Score Normalization",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 465,
+      "level": 2
+    },
+    {
+      "id": "section:quality-metrics",
+      "type": "section",
+      "name": "Quality Metrics",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 481,
+      "level": 2
+    },
+    {
+      "id": "section:security-considerations",
+      "type": "section",
+      "name": "Security Considerations",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 494,
+      "level": 1
+    },
+    {
+      "id": "section:data-privacy",
+      "type": "section",
+      "name": "Data Privacy",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 496,
+      "level": 2
+    },
+    {
+      "id": "section:provider-specific-security",
+      "type": "section",
+      "name": "Provider-Specific Security",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 505,
+      "level": 2
+    },
+    {
+      "id": "section:integrity-protection",
+      "type": "section",
+      "name": "Integrity Protection",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 514,
+      "level": 2
+    },
+    {
+      "id": "section:temporal-validation",
+      "type": "section",
+      "name": "Temporal Validation",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 518,
+      "level": 2
+    },
+    {
+      "id": "section:wtf-as-an-analysis-framework",
+      "type": "section",
+      "name": "WTF as an Analysis Framework",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 522,
+      "level": 1
+    },
+    {
+      "id": "section:analysis-vs-storage",
+      "type": "section",
+      "name": "Analysis vs. Storage",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 526,
+      "level": 2
+    },
+    {
+      "id": "section:analysis-processing-workflow",
+      "type": "section",
+      "name": "Analysis Processing Workflow",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 538,
+      "level": 2
+    },
+    {
+      "id": "section:iana-considerations",
+      "type": "section",
+      "name": "IANA Considerations",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 549,
+      "level": 1
+    },
+    {
+      "id": "section:vcon-extensions-names-registry",
+      "type": "section",
+      "name": "vCon Extensions Names Registry",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 551,
+      "level": 2
+    },
+    {
+      "id": "section:wtf-analysis-type-values-registry",
+      "type": "section",
+      "name": "WTF Analysis Type Values Registry",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 560,
+      "level": 2
+    },
+    {
+      "id": "section:wtf-provider-registry",
+      "type": "section",
+      "name": "WTF Provider Registry",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 575,
+      "level": 2
+    },
+    {
+      "id": "section:examples",
+      "type": "section",
+      "name": "Examples",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 585,
+      "level": 1
+    },
+    {
+      "id": "section:basic-two-party-call-transcription-analysis",
+      "type": "section",
+      "name": "Basic Two-Party Call Transcription Analysis",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 587,
+      "level": 2
+    },
+    {
+      "id": "section:multi-provider-transcription-analysis-comparison",
+      "type": "section",
+      "name": "Multi-Provider Transcription Analysis Comparison",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 740,
+      "level": 2
+    },
+    {
+      "id": "section:acknowledgements",
+      "type": "section",
+      "name": "Acknowledgements",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 828,
+      "level": 1
+    },
+    {
+      "id": "section:trademark-notice",
+      "type": "section",
+      "name": "Trademark Notice",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 834,
+      "level": 1
+    },
+    {
+      "id": "reference:rfc2119",
+      "type": "reference",
+      "name": "RFC 2119",
+      "url": "https://www.rfc-editor.org/rfc/rfc2119"
+    },
+    {
+      "id": "reference:rfc8174",
+      "type": "reference",
+      "name": "RFC 8174",
+      "url": "https://www.rfc-editor.org/rfc/rfc8174"
+    },
+    {
+      "id": "reference:rfc3339",
+      "type": "reference",
+      "name": "RFC 3339",
+      "url": "https://www.rfc-editor.org/rfc/rfc3339"
+    },
+    {
+      "id": "reference:rfc8949",
+      "type": "reference",
+      "name": "RFC 8949",
+      "url": "https://www.rfc-editor.org/rfc/rfc8949"
+    },
+    {
+      "id": "requirement:req-1",
+      "type": "requirement",
+      "name": "SHOULD NOT: The key words \"MUST\", \"MUST NOT\", \"REQUIRED\", \"SHALL\", \"SHALL NOT\", \"SHOULD\", \"S",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 131,
+      "keyword": "SHOULD NOT"
+    },
+    {
+      "id": "requirement:req-2",
+      "type": "requirement",
+      "name": "SHOULD: vCon instances that include WTF transcription analysis SHOULD include \"wtf_trans",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 230,
+      "keyword": "SHOULD"
+    },
+    {
+      "id": "requirement:req-3",
+      "type": "requirement",
+      "name": "MUST: Transcription analysis results MUST be stored as vCon analysis using the standar",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 258,
+      "keyword": "MUST"
+    },
+    {
+      "id": "requirement:req-4",
+      "type": "requirement",
+      "name": "MUST: The WTF transcription analysis object MUST include:",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 260,
+      "keyword": "MUST"
+    },
+    {
+      "id": "requirement:req-5",
+      "type": "requirement",
+      "name": "MUST: * **type**: MUST be set to \"wtf_transcription\" to identify this as a WTF analysi",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 262,
+      "keyword": "MUST"
+    },
+    {
+      "id": "requirement:req-6",
+      "type": "requirement",
+      "name": "MUST: * **encoding**: MUST be set to \"json\" for structured analysis data",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 263,
+      "keyword": "MUST"
+    },
+    {
+      "id": "requirement:req-7",
+      "type": "requirement",
+      "name": "MUST: * **body**: MUST contain the WTF transcription analysis data structure as define",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 264,
+      "keyword": "MUST"
+    },
+    {
+      "id": "requirement:req-8",
+      "type": "requirement",
+      "name": "SHOULD: The WTF transcription analysis SHOULD include:",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 266,
+      "keyword": "SHOULD"
+    },
+    {
+      "id": "requirement:req-9",
+      "type": "requirement",
+      "name": "MUST: The `body` field of the WTF transcription analysis object MUST contain a JSON ob",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 274,
+      "keyword": "MUST"
+    },
+    {
+      "id": "requirement:req-10",
+      "type": "requirement",
+      "name": "MUST: * **language**: MUST use BCP-47 format [BCP47] (examples: \"en-US\", \"es-MX\", \"fr-",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 292,
+      "keyword": "MUST"
+    },
+    {
+      "id": "requirement:req-11",
+      "type": "requirement",
+      "name": "MUST: * **duration**: Floating-point seconds, MUST be >= 0",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 293,
+      "keyword": "MUST"
+    },
+    {
+      "id": "requirement:req-12",
+      "type": "requirement",
+      "name": "MUST: * **id**: MUST be unique within the document, typically sequential",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 314,
+      "keyword": "MUST"
+    },
+    {
+      "id": "requirement:req-13",
+      "type": "requirement",
+      "name": "SHOULD: * **text**: SHOULD be trimmed of leading/trailing whitespace",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 316,
+      "keyword": "SHOULD"
+    },
+    {
+      "id": "requirement:req-14",
+      "type": "requirement",
+      "name": "MUST: * **created_at**/**processed_at**: MUST use ISO 8601 format",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 342,
+      "keyword": "MUST"
+    },
+    {
+      "id": "requirement:req-15",
+      "type": "requirement",
+      "name": "MUST: All confidence scores MUST be normalized to the `[0.0, 1.0]` range:",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 467,
+      "keyword": "MUST"
+    },
+    {
+      "id": "requirement:req-16",
+      "type": "requirement",
+      "name": "SHOULD: Transcription data often contains sensitive personal information. Implementation",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 498,
+      "keyword": "SHOULD"
+    },
+    {
+      "id": "requirement:req-17",
+      "type": "requirement",
+      "name": "SHOULD: WTF transcription analysis objects SHOULD be integrity protected using vCon sign",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 516,
+      "keyword": "SHOULD"
+    },
+    {
+      "id": "requirement:req-18",
+      "type": "requirement",
+      "name": "SHOULD: Implementations SHOULD validate that transcription timestamps are consistent wit",
+      "file": "draft-howe-vcon-wtf-extension.md",
+      "line": 520,
+      "keyword": "SHOULD"
+    },
+    {
+      "id": "document:LLM_GUIDE",
+      "type": "document",
+      "name": "LLM_GUIDE",
+      "file": "LLM_GUIDE.md"
+    },
+    {
+      "id": "document:readme",
+      "type": "document",
+      "name": "README",
+      "file": "README.md"
+    }
+  ],
+  "edges": [
+    {
+      "from": "document:draft",
+      "to": "section:requirements-language",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:introduction",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:conventions-and-definitions",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:core-terms",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:world-transcription-format-overview",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:design-principles",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:core-structure",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:vcon-wtf-extension-definition",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:extension-classification",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:extension-registration",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:extension-usage",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:wtf-analysis-structure",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:analysis-storage",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:wtf-analysis-schema",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:required-fields",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:transcript-object",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:segments-array",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:metadata-object",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:optional-fields",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:words-array",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:speakers-object",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:quality-object",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:extensions-object",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:provider-integration-guidelines",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:supported-providers",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:conversion-requirements",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:provider-specific-mappings",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:whisper-integration",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:deepgram-integration",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:quality-and-confidence-metrics",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:confidence-score-normalization",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:quality-metrics",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:security-considerations",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:data-privacy",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:provider-specific-security",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:integrity-protection",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:temporal-validation",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:wtf-as-an-analysis-framework",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:analysis-vs-storage",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:analysis-processing-workflow",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:iana-considerations",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:vcon-extensions-names-registry",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:wtf-analysis-type-values-registry",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:wtf-provider-registry",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:examples",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:basic-two-party-call-transcription-analysis",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:multi-provider-transcription-analysis-comparison",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:acknowledgements",
+      "type": "contains"
+    },
+    {
+      "from": "document:draft",
+      "to": "section:trademark-notice",
+      "type": "contains"
+    }
+  ],
+  "subsystems": []
+}
