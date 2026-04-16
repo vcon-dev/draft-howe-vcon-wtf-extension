@@ -72,6 +72,20 @@ informative:
     seriesinfo:
       Internet-Draft: draft-ietf-vcon-overview
 
+  I-D.draft-ietf-vcon-privacy-primer:
+    target: https://datatracker.ietf.org/doc/draft-ietf-vcon-privacy-primer/
+    title: "Privacy Primer for vCon Developers"
+    author:
+      -
+        name: Diana James
+        org: Marashlian & Donahue, PLLC
+      -
+        name: Thomas McCarthy-Howe
+        org: VCONIC
+    date: 2025
+    seriesinfo:
+      Internet-Draft: draft-ietf-vcon-privacy-primer
+
   BCP47:
     target: https://www.rfc-editor.org/rfc/rfc5646.html
     title: "Tags for Identifying Languages"
@@ -132,7 +146,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 # Introduction
 
-Virtualized Conversations (vCon) [I-D.draft-ietf-vcon-vcon-core] provide a standardized container format for conversation data, enabling interoperability across different communication platforms and modalities. As speech-to-text technology becomes increasingly important for conversation analysis, compliance, and accessibility, there is a growing need for standardized transcription analysis representation within vCon containers.
+Virtualized Conversations (vCon) [I-D.draft-ietf-vcon-vcon-core] provide a standardized container format for conversation data, enabling interoperability across different communication platforms and modalities. An overview of the vCon ecosystem and its use cases is provided in [I-D.draft-ietf-vcon-overview]. As speech-to-text technology becomes increasingly important for conversation analysis, compliance, and accessibility, there is a growing need for standardized transcription analysis representation within vCon containers.
 
 Current transcription services each use proprietary formats, making it difficult to:
 
@@ -549,7 +563,7 @@ The quality object provides assessment metrics:
 
 ## Data Privacy
 
-Transcription data often contains sensitive personal information. Implementations SHOULD:
+Transcription data often contains sensitive personal information. Developers implementing WTF SHOULD consult [I-D.draft-ietf-vcon-privacy-primer] for comprehensive guidance on privacy considerations when handling vCon data. Implementations SHOULD:
 
 * Apply appropriate access controls to WTF analysis objects
 * Consider encryption requirements for transcription data at rest and in transit
