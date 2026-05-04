@@ -25,7 +25,7 @@ author:
     organization: VCONIC
     email: ghostofbasho@gmail.com
 
-date: 2026-04-16
+date: 2026-05-04
 seriesinfo:
   Internet-Draft: draft-howe-vcon-wtf-extension
 
